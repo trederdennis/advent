@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adventskalender - Tür</title>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            body {
+                background: url('background.jpeg');
+                background-size: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                font-family: 'Quicksand', sans-serif;
+                text-transform: none; /* Groß- und Kleinbuchstaben erlauben */
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+                color: #ffffff;
+                overflow-x: hidden;
+            }
+    
+            .snow {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                pointer-events: none;
+                z-index: 1;
+            }
+    
+            .snowflake {
+                position: absolute;
+                background: white;
+                border-radius: 50%;
+                opacity: 0.8;
+                animation: fall linear infinite;
+            }
+    
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                }
+            }
+    
+            .content {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                max-width: 800px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+    
+            h1 {
+                color: #E0E7FF;
+                font-size: 2em;
+                font-weight: 700;
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+                margin-bottom: 20px;
+            }
+    
+            p {
+                color: #c9ddf7;
+                font-size: 1.2em;
+                font-weight: 400;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+    
+            ul {
+                color: #c9ddf7;
+                font-size: 1em;
+                font-weight: 400;
+                margin-left: 40px;
+                margin-bottom: 20px;
+                text-align: left;
+            }
+    
+            li {
+                margin-bottom: 10px;
+            }
+    
+            .navigation {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                margin-top: 20px;
+            }
+    
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 1.2em;
+                color: #E0E7FF;
+                text-decoration: none;
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+    
+            .nav-button:hover {
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(1.05);
+            }
+    
+            .nav-button:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+                transform: none;
+            }
+    
+            .page {
+                display: none;
+            }
+    
+            .page.active {
+                display: block;
+            }
+        </style>
+<body>
+    <div class="snow" id="snowContainer"></div>
+    <div class="content">
+        <div class="page active" data-page="1">
+            <h1>Türchen 1: Markovketten</h1>
+            <p>Alooo, das erste Mini-Projekt das du heute machen kannst, geht um die Sequenz- generierung mithilfe einer einfachen Markovkette :] Alsoooo, als kleiner Recap, hier drunter siehst du das wir die 4 Zustände, passend zu den Basen haben und dazwischen die jeweiligen Wahrscheinlichkeiten, von einer in die nächste zu wechseln:</p>
+            <img src="markov.png" alt="Markovkette" style="margin-top: 20px; max-width: 70%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">
+            <p>Du kannst vllt. mal überlegen wie wir das jetzt nutzen können, um uns zufällige Sequenzen zu generieren. Und joaaa, auf der nächsten page gehts dann los :) </p>
+        </div>
+
+        <div class="page" data-page="2">
+            <h1>Markovketten - Seite 2</h1>
+            <p>Also, wir können erstmal versuchen die Markovkette, in ein Format zu bringen das wir nutzen können (Maatrix, ist am einfachsten). Also, kannst du dir überlegen wie Sie aussehen muss, bzw. schon den Code dafür zu schreiben.</p>
+            <img src="markov.png" alt="Markovkette" style="margin-top: 20px; max-width: 70%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">
+            <p>Tipps:</p>
+            <ul>
+                <li>Die Matrix muss genauso viele Spalten und Zeilen haben, wie wir Basen haben</li>
+                <li>Man kann Matrizen mit den Befehl matrix() in R erstellen</li>
+            </ul>
+            <p>Auf der nächsten page gibts die lösung (wooow)</p>
+        </div>
+
+        <style>
+            pre {
+                background-color: #d8d8d814;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                font-family: 'Courier New', monospace;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                text-align: left;
+                margin: 10px 0;
+                font-size: 0.8em;
+                line-height: 1.4;
+            }
+        </style>
+        
+        <div class="page" data-page="3">
+            <h1>Markovketten - Seite 3</h1>
+            <p>Lösung:</p>
+            
+            <pre>
+# Matrix erstellen
+markov_matrix = matrix(
+    c(0.1, 0.4, 0.4, 0.1,
+      0.3, 0.3, 0.2, 0.2,
+      0.2, 0.2, 0.3, 0.3,
+      0.4, 0.1, 0.4, 0.1),
+      nrow = 4, byrow = TRUE
+    )
+
+# Spalten und Zeilen umbenennen damit wir sie leicher indexen können
+rownames(markov_matrix) = c("A", "C", "G", "T")
+colnames(markov_matrix) = c("A", "C", "G", "T")
+
+# Schauen wie die Matrix aussieht
+print(markov_matrix)
+            </pre>
+        <p> Wie du siehst, hab ich die Spalten/Zeilen Namen noch umb(anan)enannt, damit es ein bisschen verständlicher ist und man es leichter indexen kann. Wenn wir jetzt bspw. von zustand A zu A wollen, können wir einfach markov_matrix["A","A"] zum navigieren benutzen :O. Die Wahrscheinlichkeit passt dann auch jeweils (hier 0.1)</p>
+        <p>So als nächstes müssen wir uns erstmal um die Startbase kümmern, weil uns die Markovkette keine Informationen darüber gibt. Alsooo, kannst du vielleicht kurz Code schreiben, der aus den vier Basen eine zufällig auswählt die wir zum Start nehmen.</p>
+        <p>Tipps:</p>
+        <ul>
+            <li>nimm die sample Funktion</li>
+            <li>Eine gleiche Wahrscheinlichkeit für jede Base sollte passen</li>
+        </ul>
+        <p>Und auf der nächsten Seite gibts dann wieder die Lösung (öhm, hoffentlich bist du noch dabei und ich habs nicht kacke erklärt)</p>
+        </div>
+
+        <div class="page" data-page="4">
+            <h1>Markovketten - Seite 4</h1>
+            <p>Lösung:</p>
+            
+            <pre>
+# Startbase zufällig bestimmen
+start_base = sample(c("A", "C", "G", "T"),
+                    size = 1,
+                    prob = c(0.25, 0.25, 0.25, 0.25))
+
+# Testen ob es geht
+print(paste("Die Startbase ist:", start_base))
+</pre>
+            
+            <p>SoOoOo jetzt wird es ein bisschen schwieriger, wir wollen jetzt eine Funktion schreiben, der wir die Startbase übergeben und unsere Matrix. Darauf(hi)n soll damit die nächste Base bestimmt und zurückgegeben werden.</p>
+            <p>Tipps:</p>
+            <ul>
+                <li>Wir müssen uns passend zu der Startbase, die jeweilige Zeile in der Matrix auswählen (which function in R benutzen)</li>
+                <li>Mit der Zeile können wir wieder sample() nutzen, da diese die probabilitys hat</li>
+            </ul>
+            <p>Jooo, also auf der nächsten page ist wieder die Lösung.</p>
+        </div>
+
+        <div class="page" data-page="5">
+            <h1>Markovketten - Seite 5</h1>
+            <p>Lösung:</p>
+            <pre> 
+next_base <- function(current_base, markov_matrix) {
+    probs = markov_matrix[which(rownames(markov_matrix) == current_base), ]
+    base = sample(c("A", "C", "G", "T"), size = 1, prob = probs)
+    return(base)
+}
+
+# Funktion testen
+print(next_base("A", markov_matrix))
+            </pre>
+            <p>Fast fertig, wir haben jetzt eine "Helper" Funktion gebaut die wir in einer anderen Funktion immer wieder aufrufen können, um so jetzt eine komplette Sequenz zu bauen :)</p>
+            <p>Die nächste Task ist jetzt alsoo eine neue Funktion zu schreiben, die die Startbase, die matrix und die Länge übergeben bekommt</p>
+            <p>Tipps:</p>
+            <ul>
+                <li>Erstell in der neuen Funktion eine Liste, die unser Startbase als erstes element hat</li>
+                <li>Rufe die Funktion die wir gerade geschrieben haben, immer wieder mit den letzten Element der Liste auf</li>
+            </ul>
+        </div>
+
+        <div class="page" data-page="6">
+            <h1>Markovketten - Seite 6</h1>
+            <p>Lösung:</p>
+            <pre>
+# Unsere DNA-Sequenz Erstellung aus Markovkette tolle Funktion
+generate_sequence = function(start_base, length, markov_matrix) {
+    sequence = c(start_base)
+    for (i in 2:length) {
+    sequence[i] = next_base(sequence[i - 1], markov_matrix)
+    }
+    return(sequence)
+}
+
+# Testen mit einer Sequenz die 10 lang ist
+sequence = generate_sequence(start_base, 10, markov_matrix)
+print(sequence)
+
+            </pre>
+
+
+
+            <p>jup, das wars schon, hoffentlich hat alles gut geklappt und du hast was dabei gelernt und joaaaaa :], ich hab aufjedenfall nebenbei gelernt wie man so websiten designed also, ich hatte spaß dabei i guess also jaa</p>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-button" id="prevButton">Zurück</button>
+            <button class="nav-button" id="nextButton">Weiter</button>
+            <a href="../index.html" class="nav-button">Zum Kalender</a>
+        </div>
+    </div>
+
+    <script>
+        function createSnowflakes() {
+            const snowContainer = document.getElementById('snowContainer');
+            for (let i = 0; i < 100; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.width = Math.random() * 3 + 1 + 'px';
+                snowflake.style.height = snowflake.style.width;
+                snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                snowflake.style.animationDelay = Math.random() * -10 + 's';
+                snowContainer.appendChild(snowflake);
+            }
+        }
+
+        createSnowflakes();
+
+        // Navigation Logic
+        const pages = document.querySelectorAll('.page');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        let currentPage = 1;
+
+        function updateButtons() {
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage === pages.length;
+        }
+
+        function showPage(pageNumber) {
+            pages.forEach(page => page.classList.remove('active'));
+            document.querySelector(`[data-page="${pageNumber}"]`).classList.add('active');
+            currentPage = pageNumber;
+            updateButtons();
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentPage < pages.length) {
+                showPage(currentPage + 1);
+            }
+        });
+
+        updateButtons();
+    </script>
+</body>
+</html>

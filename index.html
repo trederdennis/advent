@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventskalender 2024</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url('tuerchen/background.jpeg');
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Mountains of Christmas', cursive;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #E0E7FF;
+            font-size: 5em;
+            font-weight: 700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #c4d6ed;
+            font-size: 1.6em;
+            font-weight: 600;
+            text-shadow: 3px 3px 6px rgb(0, 0, 0);
+        }
+
+        .calendar-container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .door {
+            aspect-ratio: 1;
+            border-radius: 15px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .door::before {
+            content: attr(data-number);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 10em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 2;
+            opacity: 0.7;
+        }
+
+        .door:hover {
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: 0 15px 20px rgba(0,0,0,0.4);
+        }
+
+        .door.locked {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #2C5364;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-content.large-modal {
+            transform: scale(1.2);
+        }
+
+        .nav-button {
+            padding: 8px 20px;
+            font-size: 1em;
+            color: #E0E7FF;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* New SOS Help Button Styles */
+        .sos-help-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #ff4136;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            font-size: 40px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .sos-help-button:hover {
+            background-color: #ff6b5b;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 3em;
+            }
+
+            .door::before {
+                font-size: 3em;
+            }
+
+            .sos-help-button {
+                width: 50px;
+                height: 50px;
+                font-size: 16px;
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .calendar-container {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(8, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .calendar-container {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(12, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="snow" id="snowContainer"></div>
+    <div class="container">
+        <div class="header">
+            <h1>Elli's R-Adventskalender</h1>
+            <h2>Ähm, joaaaa ein paar Mini-Projekte die zur Vorlesung passen und dir vielleicht helfen :)</h2>
+        </div>
+        <div class="calendar-container" id="calendarContainer"></div>
+    </div>
+
+    <a href="tuerchen/hilfe.html" class="sos-help-button">Hilfe</a>
+
+    <div class="modal" id="lockModal">
+        <div class="modal-content">
+            <h2>Heyyy, es ist noch zu frühh :O</h2>
+            <button class="nav-button" onclick="closeLockModal()">Verstanden</button>
+        </div>
+    </div>
+
+    <script>
+        function createSnowflakes() {
+            const snowContainer = document.getElementById('snowContainer');
+            for (let i = 0; i < 100; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.width = Math.random() * 3 + 1 + 'px';
+                snowflake.style.height = snowflake.style.width;
+                snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                snowflake.style.animationDelay = Math.random() * -10 + 's';
+                snowContainer.appendChild(snowflake);
+            }
+        }
+
+        function generateDoors() {
+            const calendarContainer = document.getElementById('calendarContainer');
+            for (let i = 1; i <= 24; i++) {
+                const door = document.createElement('a');
+                door.classList.add('door');
+                door.setAttribute('data-number', i);
+                door.href = `tuerchen/tuer${i}.html`; // Verweis auf den Ordner 'tuerchen'
+                
+                door.addEventListener('click', (e) => {
+                    const currentDate = new Date();
+                    const adventStart = new Date(2024, 11, 1);
+                    const adventEnd = new Date(2024, 11, 24);
+
+                    if (currentDate < adventStart || currentDate > adventEnd || 
+                        currentDate.getDate() < i) {
+                        e.preventDefault();
+                        door.classList.add('locked');
+                        showLockModal();
+                    }
+                });
+
+                calendarContainer.appendChild(door);
+            }
+        }
+
+        function showLockModal() {
+            const modal = document.getElementById('lockModal');
+            const modalContent = modal.querySelector('.modal-content');
+
+            modal.style.display = 'flex';
+            modalContent.classList.add('large-modal');
+        }
+
+        function closeLockModal() {
+            const modal = document.getElementById('lockModal');
+            modal.style.display = 'none';
+        }
+
+        createSnowflakes();
+        generateDoors();
+    </script>
+</body>
+</html>
