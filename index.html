@@ -14,9 +14,10 @@
 
         body {
             background: url('tuerchen/background.jpeg');
-            background-size: 100%;
-            background-position: center;
+            background-size: cover;
+            background-position: center center;
             background-repeat: no-repeat;
+            background-attachment: fixed; /* Wichtig für Responsiveness */
             font-family: 'Mountains of Christmas', cursive;
             min-height: 100vh;
             display: flex;
@@ -258,6 +259,30 @@
     </div>
 
     <script>
+        function optimizeBackgroundImage() {
+        const body = document.body;
+        const img = new Image();
+        img.src = 'tuerchen/background.jpeg';
+        
+        img.onload = function() {
+            const aspectRatio = img.width / img.height;
+            const windowAspectRatio = window.innerWidth / window.innerHeight;
+            
+            if (aspectRatio > windowAspectRatio) {
+                // Wenn das Bild breiter ist als der Bildschirm
+                body.style.backgroundSize = 'auto 100%';
+            } else {
+                // Wenn das Bild höher ist als der Bildschirm
+                body.style.backgroundSize = '100% auto';
+            }
+        };
+
+        // Aktualisiere bei Größenänderung des Fensters
+        window.addEventListener('resize', optimizeBackgroundImage);
+    }
+
+// Rufen Sie die Funktion nach dem Laden der Seite auf
+window.addEventListener('load', optimizeBackgroundImage);
         function createSnowflakes() {
             const snowContainer = document.getElementById('snowContainer');
             for (let i = 0; i < 100; i++) {
