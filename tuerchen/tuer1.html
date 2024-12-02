@@ -14,11 +14,11 @@
     
             body {
                 background: url('background.jpeg');
-                background-size: 100%;
-                background-position: center;
+                background-size: cover;
+                background-position: center center;
                 background-repeat: no-repeat;
-                font-family: 'Quicksand', sans-serif;
-                text-transform: none; /* Groß- und Kleinbuchstaben erlauben */
+                background-attachment: fixed; /* Wichtig für Responsiveness */
+                font-family: 'Mountains of Christmas', cursive;
                 min-height: 100vh;
                 display: flex;
                 flex-direction: column;
@@ -59,7 +59,7 @@
                 text-align: center;
                 max-width: 800px;
                 padding: 20px;
-                background: rgba(0, 0, 0, 0.5);
+                background: rgba(0, 0, 0, 0.656);
                 border-radius: 15px;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             }
@@ -136,14 +136,14 @@
     <div class="content">
         <div class="page active" data-page="1">
             <h1>Türchen 1: Markovketten</h1>
-            <p>Alooo, das erste Mini-Projekt das du heute machen kannst, geht um die Sequenz- generierung mithilfe einer einfachen Markovkette :] Alsoooo, als kleiner Recap, hier drunter siehst du das wir die 4 Zustände, passend zu den Basen haben und dazwischen die jeweiligen Wahrscheinlichkeiten, von einer in die nächste zu wechseln:</p>
+            <p>Alooo, das erste Mini-Projekt das du heute machen kannst, geht um die Sequenz- generierung mithilfe einer einfachen Markovkette :] Alsoooo, als kleiner Recap, hier drunter siehst du das wir die 4 Zustände, passend zu den Basen haben und dazwischen die jeweiligen Wahrscheinlichkeiten:</p>
             <img src="markov.png" alt="Markovkette" style="margin-top: 20px; max-width: 70%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">
             <p>Du kannst vllt. mal überlegen wie wir das jetzt nutzen können, um uns zufällige Sequenzen zu generieren. Und joaaa, auf der nächsten page gehts dann los :) </p>
         </div>
 
         <div class="page" data-page="2">
             <h1>Markovketten - Seite 2</h1>
-            <p>Also, wir können erstmal versuchen die Markovkette, in ein Format zu bringen das wir nutzen können (Maatrix, ist am einfachsten). Also, kannst du dir überlegen wie Sie aussehen muss, bzw. schon den Code dafür zu schreiben.</p>
+            <p>Also, wir können erstmal versuchen die Markovkette, in ein Format zu bringen das wir nutzen können (Maatrix, ist am einfachsten). Also, kannst du dir überlegen wie Sie aufgebaut sein muss, bzw. den Code dafür schreiben.</p>
             <img src="markov.png" alt="Markovkette" style="margin-top: 20px; max-width: 70%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">
             <p>Tipps:</p>
             <ul>
@@ -190,14 +190,14 @@ colnames(markov_matrix) = c("A", "C", "G", "T")
 # Schauen wie die Matrix aussieht
 print(markov_matrix)
             </pre>
-        <p> Wie du siehst, hab ich die Spalten/Zeilen Namen noch umb(anan)enannt, damit es ein bisschen verständlicher ist und man es leichter indexen kann. Wenn wir jetzt bspw. von zustand A zu A wollen, können wir einfach markov_matrix["A","A"] zum navigieren benutzen :O. Die Wahrscheinlichkeit passt dann auch jeweils (hier 0.1)</p>
+        <p> Wie du siehst, hab ich die Spalten/Zeilen Namen noch umb(anan)enannt, damit es ein bisschen verständlicher ist und man es leichter indexen kann. Wenn wir jetzt bspw. von Zustand "A" zu "A" wollen, können wir einfach markov_matrix["A","A"] zum navigieren benutzen :O. Die Wahrscheinlichkeit passt dann auch jeweils (hier 0.1)</p>
         <p>So als nächstes müssen wir uns erstmal um die Startbase kümmern, weil uns die Markovkette keine Informationen darüber gibt. Alsooo, kannst du vielleicht kurz Code schreiben, der aus den vier Basen eine zufällig auswählt die wir zum Start nehmen.</p>
         <p>Tipps:</p>
         <ul>
             <li>nimm die sample Funktion</li>
             <li>Eine gleiche Wahrscheinlichkeit für jede Base sollte passen</li>
         </ul>
-        <p>Und auf der nächsten Seite gibts dann wieder die Lösung (öhm, hoffentlich bist du noch dabei und ich habs nicht kacke erklärt)</p>
+        <p>Und auf der nächsten Seite gibts dann wieder die Lösung (öhm, war das verständlich, ja nein ahh)</p>
         </div>
 
         <div class="page" data-page="4">
@@ -214,7 +214,7 @@ start_base = sample(c("A", "C", "G", "T"),
 print(paste("Die Startbase ist:", start_base))
 </pre>
             
-            <p>SoOoOo jetzt wird es ein bisschen schwieriger, wir wollen jetzt eine Funktion schreiben, der wir die Startbase übergeben und unsere Matrix. Darauf(hi)n soll damit die nächste Base bestimmt und zurückgegeben werden.</p>
+            <p>SoOoOo jetzt wird es ein bisschen schwieriger, wir wollen jetzt eine Funktion schreiben, der wir die Startbase und unsere Matrix übergeben. Darauf(hi)n soll damit die nächste Base bestimmt und zurückgegeben werden.</p>
             <p>Tipps:</p>
             <ul>
                 <li>Wir müssen uns passend zu der Startbase, die jeweilige Zeile in der Matrix auswählen (which function in R benutzen)</li>
@@ -227,7 +227,7 @@ print(paste("Die Startbase ist:", start_base))
             <h1>Markovketten - Seite 5</h1>
             <p>Lösung:</p>
             <pre> 
-next_base <- function(current_base, markov_matrix) {
+next_base = function(current_base, markov_matrix) {
     probs = markov_matrix[which(rownames(markov_matrix) == current_base), ]
     base = sample(c("A", "C", "G", "T"), size = 1, prob = probs)
     return(base)
@@ -266,7 +266,7 @@ print(sequence)
 
 
 
-            <p>jup, das wars schon, hoffentlich hat alles gut geklappt und du hast was dabei gelernt und joaaaaa :], ich hab aufjedenfall nebenbei gelernt wie man so websiten designed also, ich hatte spaß dabei i guess also jaa</p>
+            <p>jup, das wars schon, hoffentlich hat alles gut geklappt und du hast was dabei gelernt und joaaaaa :], ich hab aufjedenfall nebenbei gelernt wie man so websiten aufsetzt und baut also, ich hatte spaß dabei i guess also jaa, tschauu</p>
         </div>
 
         <div class="navigation">
@@ -277,6 +277,27 @@ print(sequence)
     </div>
 
     <script>
+        function optimizeBackgroundImage() {
+        const body = document.body;
+        const img = new Image();
+        img.src = 'tuerchen/background.jpeg';
+        
+        img.onload = function() {
+            const aspectRatio = img.width / img.height;
+            const windowAspectRatio = window.innerWidth / window.innerHeight;
+            
+            if (aspectRatio > windowAspectRatio) {
+                // Wenn das Bild breiter ist als der Bildschirm
+                body.style.backgroundSize = 'auto 100%';
+            } else {
+                // Wenn das Bild höher ist als der Bildschirm
+                body.style.backgroundSize = '100% auto';
+            }
+        };
+
+        // Aktualisiere bei Größenänderung des Fensters
+        window.addEventListener('resize', optimizeBackgroundImage);
+    }
         function createSnowflakes() {
             const snowContainer = document.getElementById('snowContainer');
             for (let i = 0; i < 100; i++) {
