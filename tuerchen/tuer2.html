@@ -1,109 +1,295 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventskalender - Tür</title>
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: url('A_realistic_Christmas_village_scene_under_a_stunning_display_of_polar_lights_in_the_night_sky_The_village_features_charming_snow_covered_houses_with_warm_light_glowing_from_the_windows_There_are_decorated_evergree.jpeg');
-            background-size: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-family: 'Mountains of Christmas', cursive;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        .snow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .snowflake {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(720deg);
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adventskalender - Tür</title>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
-        }
-
-        .content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            color: #E0E7FF;
-            font-size: 3em;
-            font-weight: 700;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
-        }
-
-        p {
-            color: #A0AEC0;
-            font-size: 1.5em;
-            font-weight: 400;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            color: #E0E7FF;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.05);
-        }
-    </style>
-</head>
+    
+            body {
+                background: url('background.jpeg');
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed; /* Wichtig für Responsiveness */
+                font-family: 'Mountains of Christmas', cursive;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+                color: #ffffff;
+                overflow-x: hidden;
+            }
+    
+            .snow {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                pointer-events: none;
+                z-index: 1;
+            }
+    
+            .snowflake {
+                position: absolute;
+                background: white;
+                border-radius: 50%;
+                opacity: 0.8;
+                animation: fall linear infinite;
+            }
+    
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                }
+            }
+    
+            .content {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                max-width: 800px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.656);
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+    
+            h1 {
+                color: #E0E7FF;
+                font-size: 2em;
+                font-weight: 700;
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+                margin-bottom: 20px;
+            }
+    
+            p {
+                color: #c9ddf7;
+                font-size: 1.2em;
+                font-weight: 400;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+    
+            ul {
+                color: #c9ddf7;
+                font-size: 1em;
+                font-weight: 400;
+                margin-left: 40px;
+                margin-bottom: 20px;
+                text-align: left;
+            }
+    
+            li {
+                margin-bottom: 10px;
+            }
+    
+            .navigation {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                margin-top: 20px;
+            }
+    
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 1.2em;
+                color: #E0E7FF;
+                text-decoration: none;
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+    
+            .nav-button:hover {
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(1.05);
+            }
+    
+            .nav-button:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+                transform: none;
+            }
+    
+            .page {
+                display: none;
+            }
+    
+            .page.active {
+                display: block;
+            }
+        </style>
 <body>
     <div class="snow" id="snowContainer"></div>
     <div class="content">
-        <h1>Tür X</h1>
-        <p>Hier kommt der Inhalt für dieses Türchen hin.</p>
-        <a href="../index.html">Zurück zum Adventskalender</a>
+        <div class="page active" data-page="1">
+            <h1>Türchen 2: Jukes-Cantor</h1>
+            <p>Heyy, das zweite Türchen geht um die "Jukes-Cantor Distanz". Als Grundlage benutzen wir den im ersten Türchen erstellten Code zur Sequenzgenerierung: </p>
+            <pre>
+# Unsere Helper Funktion
+next_base = function(current_base, markov_matrix) {
+    probs = markov_matrix[which(rownames(markov_matrix) == current_base), ]
+    base = sample(c("A", "C", "G", "T"), size = 1, prob = probs)
+    return(base)
+}
+
+# Unsere DNA-Sequenz Erstellung aus Markovkette Funktion
+generate_sequence = function(start_base, length, markov_matrix) {
+    sequence = c(start_base)
+    for (i in 2:length) {
+        sequence[i] = next_base(sequence[i - 1], markov_matrix)
+    }
+    return(sequence)
+}
+
+# Unsere Markov Matrix
+markov_matrix = matrix(c(0.1, 0.4, 0.4, 0.1,0.3, 0.3, 0.2, 0.2,
+                         0.2, 0.2, 0.3, 0.3,0.4, 0.1, 0.4, 0.1),nrow = 4, byrow = TRUE)
+
+rownames(markov_matrix) = c("A", "C", "G", "T")
+colnames(markov_matrix) = c("A", "C", "G", "T")
+
+
+# Startbase zufällig bestimmen
+start_base = sample(c("A", "C", "G", "T"),size = 1,prob = c(0.25, 0.25, 0.25, 0.25))
+
+# Sequencen für die wir die Distanzen bestimmen
+seq1 = generate_sequence(start_base, 10, markov_matrix)
+seq2 = generate_sequence(start_base, 10, markov_matrix)
+
+
+            </pre>
+
+            <p>Heute kannst du dir zuerst überlegen, was wir alles bräuchten um zwei Sequenzen mit der Jukes-Cantor Distanz zu vergleichen und maybe hast du eine Idee, was für Funktionen/Formeln wir brauchen. Und joaa, auf der nächsten page gehts dann los :]</p>
+        </div>
+
+        <div class="page" data-page="2">
+            <h1>Jukes Cantor - Seite 2</h1>
+            <p>Die Formel für Jukes-Cantor entspricht:</p>
+            K = -(3/4)*ln(1-(4/3)*p_change)
+            <p>Wobei: </p>
+            p_change = (Anzahl der Mismatches)/(Länge der Sequenzen)
+            <p> </p> 
+            <p>Die erste Task wäre erstmal eine Funktion zu schreiben, die p_change berechnet. Also wir brauchen unsere beiden Sequenzen als Input und bekommen den p_change Wert zurück.</p>
+            <p>Tipps:</p>
+            <ul>
+                <li>Du kannst es entweder super kurz machen, mit vektor operation oder etwas länger mit einer for-schleife.</li>
+                <li>Nicht das teilen durch die Sequenzlänge vergessen.</li>
+            </ul>
+            <p>Auf der nächsten page gibt es dann wieder die Lösung :) </p>
+        </div>
+
+        <style>
+            pre {
+                background-color: #d8d8d814;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                font-family: 'Courier New', monospace;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                text-align: left;
+                margin: 10px 0;
+                font-size: 0.8em;
+                line-height: 1.4;
+            }
+        </style>
+        
+        <div class="page" data-page="3">
+            <h1>Jukes Cantor - Seite 3</h1>
+            <p>Lösung:</p>
+            
+            <pre>
+# Kurze Version mit Vektor Operation
+p_change = function(seq1, seq2) {
+    mismatches = sum(seq1 != seq2)
+    p_change = mismatches / length(seq1)
+    return(p_change)
+}
+
+# Lange Version mit for-Schleife
+p_change = function(seq1, seq2) {
+    diff_count = 0
+    for (i in 1:length(seq1)) {
+        if (seq1[i] != seq2[i]) {
+            diff_count = diff_count + 1
+        }
+    }
+    p_change = diff_count / length(seq1)
+    return(p_change)
+}
+
+
+differences = p_change(seq1, seq2)
+cat("P_change Wert:", differences, "\n")
+            </pre>
+        <p>So als nächstes, können wir schon die Hauptfunktion schreiben die die Jukes-Cantor Distanz berechnet, in dem wir darin p_change aufrufen. Alsooo die neue Funktion bekommt einfach nur beide Sequenzen übergeben und gibt die Distanz zurück.</p>
+        <p>Tipps:</p>
+        <ul>
+            <li>Hier braucht man keine super speziellen Aufrufe, das sollte denk ich mal easy klappen</li>
+            <li>Formel: K = -(3/4)*ln(1-(4/3)*p_change)</li>
+        </ul>
+        </div>
+
+        <div class="page" data-page="4">
+            <h1>Jukes Cantor - Seite 4</h1>
+            <p>Lösung:</p>  
+            <pre>
+jukes_cantor_distance = function(seq1, seq2) {
+    p_change_value = p_change(seq1, seq2)
+    distance = -3 / 4 * log(1 - (4 / 3) * p_change_value)
+    return(distance)
+    }
+
+distance = jukes_cantor_distance(seq1, seq2)
+cat("Jukes-Cantor-Distanz:", distance, "\n")
+</pre>
+            
+            <p>jup, das wars auch schon. Das ging ein bisschen einfacher als das letzte Türchen, denk ich mal. Man könnte jetzt noch versuchen mit mehreren Sequenzen zu arbeiten. Aber ich glaube so sollte es auch passen :] tschauu</p>
+        </div>
+
+
+        <div class="navigation">
+            <button class="nav-button" id="prevButton">Zurück</button>
+            <button class="nav-button" id="nextButton">Weiter</button>
+            <a href="../index.html" class="nav-button">Zum Kalender</a>
+        </div>
     </div>
 
     <script>
+        function optimizeBackgroundImage() {
+        const body = document.body;
+        const img = new Image();
+        img.src = 'tuerchen/background.jpeg';
+        
+        img.onload = function() {
+            const aspectRatio = img.width / img.height;
+            const windowAspectRatio = window.innerWidth / window.innerHeight;
+            
+            if (aspectRatio > windowAspectRatio) {
+                // Wenn das Bild breiter ist als der Bildschirm
+                body.style.backgroundSize = 'auto 100%';
+            } else {
+                // Wenn das Bild höher ist als der Bildschirm
+                body.style.backgroundSize = '100% auto';
+            }
+        };
+
+        // Aktualisiere bei Größenänderung des Fensters
+        window.addEventListener('resize', optimizeBackgroundImage);
+    }
         function createSnowflakes() {
             const snowContainer = document.getElementById('snowContainer');
             for (let i = 0; i < 100; i++) {
@@ -119,6 +305,38 @@
         }
 
         createSnowflakes();
+
+        // Navigation Logic
+        const pages = document.querySelectorAll('.page');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        let currentPage = 1;
+
+        function updateButtons() {
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage === pages.length;
+        }
+
+        function showPage(pageNumber) {
+            pages.forEach(page => page.classList.remove('active'));
+            document.querySelector(`[data-page="${pageNumber}"]`).classList.add('active');
+            currentPage = pageNumber;
+            updateButtons();
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentPage < pages.length) {
+                showPage(currentPage + 1);
+            }
+        });
+
+        updateButtons();
     </script>
 </body>
 </html>
