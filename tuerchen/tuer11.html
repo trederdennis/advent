@@ -1,124 +1,311 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventskalender - Tür</title>
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: url('A_realistic_Christmas_village_scene_under_a_stunning_display_of_polar_lights_in_the_night_sky_The_village_features_charming_snow_covered_houses_with_warm_light_glowing_from_the_windows_There_are_decorated_evergree.jpeg');
-            background-size: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-family: 'Mountains of Christmas', cursive;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        .snow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .snowflake {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(720deg);
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adventskalender - Tür</title>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
-        }
 
-        .content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            color: #E0E7FF;
-            font-size: 3em;
-            font-weight: 700;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
-        }
-
-        p {
-            color: #A0AEC0;
-            font-size: 1.5em;
-            font-weight: 400;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            color: #E0E7FF;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-<body>
-    <div class="snow" id="snowContainer"></div>
-    <div class="content">
-        <h1>Tür X</h1>
-        <p>Hier kommt der Inhalt für dieses Türchen hin.</p>
-        <a href="../index.html">Zurück zum Adventskalender</a>
-    </div>
-
-    <script>
-        function createSnowflakes() {
-            const snowContainer = document.getElementById('snowContainer');
-            for (let i = 0; i < 100; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.classList.add('snowflake');
-                snowflake.style.left = Math.random() * 100 + 'vw';
-                snowflake.style.width = Math.random() * 3 + 1 + 'px';
-                snowflake.style.height = snowflake.style.width;
-                snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                snowflake.style.animationDelay = Math.random() * -10 + 's';
-                snowContainer.appendChild(snowflake);
+            body {
+                background: url('background.jpeg');
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                font-family: 'Mountains of Christmas', cursive;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+                color: #ffffff;
+                overflow-x: hidden;
             }
-        }
 
-        createSnowflakes();
-    </script>
-</body>
+            .snow {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .snowflake {
+                position: absolute;
+                background: white;
+                border-radius: 50%;
+                opacity: 0.8;
+                animation: fall linear infinite;
+            }
+
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                }
+            }
+
+            .content {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                max-width: 800px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.656);
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            h1 {
+                color: #E0E7FF;
+                font-size: 2em;
+                font-weight: 700;
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+                margin-bottom: 20px;
+            }
+
+            p {
+                color: #c9ddf7;
+                font-size: 1.2em;
+                font-weight: 400;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+
+            ul {
+                color: #c9ddf7;
+                font-size: 1em;
+                font-weight: 400;
+                margin-left: 40px;
+                margin-bottom: 20px;
+                text-align: left;
+            }
+
+            li {
+                margin-bottom: 10px;
+            }
+
+            .navigation {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 1.2em;
+                color: #E0E7FF;
+                text-decoration: none;
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .nav-button:hover {
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(1.05);
+            }
+
+            .nav-button:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+                transform: none;
+            }
+
+            .page {
+                display: none;
+            }
+
+            .page.active {
+                display: block;
+            }
+
+            pre {
+                background-color: #d8d8d814;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                font-family: 'Courier New', monospace;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                text-align: left;
+                margin: 10px 0;
+                font-size: 0.8em;
+                line-height: 1.4;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="snow" id="snowContainer"></div>
+        <div class="content">
+            <div class="page active" data-page="1">
+                <h1>Türchen 11: Matrizen</h1>
+                <p>Hii, heute schauen wir uns die Matrizen an, sie sind zweidimensionale Datenstrukturen, die wie die Vektoren auch nur Werte desselben Typs enthalten können. Deine erste Aufgabe besteht darin, erstmal eine 3x3-Matrix aus numerischen Werten zu erstellen, mit  <code>matrix()</code>. Gebe passend dazu noch aus, welche Dimensionen die Matrix hat <code>dim()</code>.</p>
+            </div>
+
+            <div class="page" data-page="2">
+                <h1>Matrizen - Seite 2</h1>
+                <p>Lösung:</p>
+                <pre>
+matrix1 = matrix(1:9, nrow=3, ncol=3)
+print(matrix1)
+cat("Dimensionen:", dim(matrix1))
+                </pre>
+                <p>Wie du siehst, wird die Matrix standardmäßig den Columns nach aufgefüllt. Wenn du das ändern möchtest, kannst du <code>byrow=TRUE</code> benutzen. Joaa, als nächstes wollen wir das Indexieren üben. Gib die Werte aus der ersten Zeile, dritten Spalte und den Wert in row 3 col 2. Dafür brauchst du nur die doppelten Klammern [] und ein "," da wir jetzt 2dim haben</p>
+            </div>
+
+            <div class="page" data-page="3">
+                <h1>Matrizen - Seite 3</h1>
+                <p>Lösung:</p>
+                <pre>
+# Erste Zeile
+erste_zeile = matrix1[1, ]
+print(erste_zeile)
+
+# Dritte Spalte
+dritte_spalte = matrix1[, 3]
+print(dritte_spalte)
+
+row3col2 = matrix1[3, 2]
+print(row3col2)
+                </pre>
+                <p>Das war aber noch nicht alles. Man hat bei Matrizen noch die Möglichkeiten mit "Strings/Namen" zu indexen, das heißt wir können die row/column names ändern und auch so auf Werte zugreifen. Probiers mal selbst aus mit der Syntax <code>rownames(matrix1) = c()</code> und auf der nächsten Page ist ein Beispiel :)</p>
+            </div>
+
+
+
+            <div class="page" data-page="4">
+                <h1>Matrizen - Seite 4</h1>
+                <p>Lösung:</p>
+                <pre>
+rownames(matrix1) = c("Zeile1", "Zeile2", "Zeile3")
+colnames(matrix1) = c("Spalte1", "Spalte2", "Spalte3")
+
+# Indexieren mit Strings
+print("Wert in Zeile 'Zeile1' und Spalte 'Spalte3':")
+print(matrix1["Zeile1", "Spalte3"])
+                </pre>
+                <p>Das war aber wieder nicht alles, wir können auch noch mit Logischen Conditions arbeiten. Deine Aufgabe wäre es alle Werte größer 5 aus der Matrix zu bestimmen, die Syntax ist hier <code>matrix1[matrix1 ? ?]</code>. Danach kannst du die matrix noch so ändern das du alle Werte größer 5 mit einer andern Zahl austauscht</p>
+            </div>
+
+
+            <div class="page" data-page="5">
+                <h1>Matrizen - Seite 5</h1>
+                <p>Lösung:</p>
+                <pre>
+# Logisches Indexieren: Werte größer als 5
+werte_groesser_5 = matrix1[matrix1 > 5]
+print("Werte größer als 5:")
+print(werte_groesser_5)
+
+# Logisches Indexieren: Werte ändern
+matrix1[matrix1 > 5] = 7
+print("Matrix nach Änderung (alle Werte > 5 auf 7 gesetzt):")
+print(matrix1)
+                </pre>
+                <p>Mit dieser "logischen" Syntax kannst du die Matrix auch allgemein gut filtern. Du kannst mal schauen was passiert, wenn du andere Bedingungen benutzt, z.B. <code>matrix1 %% 2 == 0</code></p>
+                <p>Aber ja das wars zum Indexen, jetzt geht es darum, Matrizenoperationen kennenzulernen. Multipliziere die Matrix mit 2 und addiere eine Matrix derselben Dimension dazu. Das kriegst du hin :)</p>
+            </div>
+
+
+            <div class="page" data-page="6">
+                <h1>Matrizen - Seite 6</h1>
+                <p>Lösung:</p>
+                <pre>
+matrix2 = matrix(10:18, nrow=3, ncol=3)
+multiplied = matrix1 * 2
+added = matrix1 + matrix2
+
+print("Matrix 1 multipliziert mit 2:")
+print(multiplied)
+
+print("Matrix 1 + Matrix 2:")
+print(added)
+                </pre>
+                <p>Sooo, das war schon fast alles, als letzte Übung hätte ich noch, den Mittelwert der gesamten Matrix und einer einzelnen Zeilen zu berechnen. Dafür brauchst du <code>mean()</code> und <code>apply()</code></p>
+            </div>
+
+            <div class="page" data-page="7">
+                <h1>Matrizen - Seite 7</h1>
+                <p>Lösung:</p>
+                <pre>
+# Mittelwert der gesamten Matrix
+mean_all = mean(matrix1)
+cat("Gesamter Mittelwert:", mean_all, "\n")
+
+# Mittelwert der Zeilen
+mean_rows = apply(matrix1, 1, mean)
+cat("Mittelwert der Zeilen:", mean_rows, "\n")
+                </pre>
+                <p>Das war's für heute. In den nächsten Türchen schauen wir uns Listen und Dataframes an, tschauuu :]</p>
+            </div>
+
+            <div class="navigation">
+                <button class="nav-button" id="prevButton">Zurück</button>
+                <button class="nav-button" id="nextButton">Weiter</button>
+                <a href="../index.html" class="nav-button">Zum Kalender</a>
+            </div>
+        </div>
+
+        <script>
+            function createSnowflakes() {
+                const snowContainer = document.getElementById('snowContainer');
+                for (let i = 0; i < 100; i++) {
+                    const snowflake = document.createElement('div');
+                    snowflake.classList.add('snowflake');
+                    snowflake.style.left = Math.random() * 100 + 'vw';
+                    snowflake.style.width = Math.random() * 3 + 1 + 'px';
+                    snowflake.style.height = snowflake.style.width;
+                    snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                    snowflake.style.animationDelay = Math.random() * -10 + 's';
+                    snowContainer.appendChild(snowflake);
+                }
+            }
+
+            createSnowflakes();
+
+            // Navigation Logic
+            const pages = document.querySelectorAll('.page');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            let currentPage = 1;
+
+            function updateButtons() {
+                prevButton.disabled = currentPage === 1;
+                nextButton.disabled = currentPage === pages.length;
+            }
+
+            function showPage(pageNumber) {
+                pages.forEach(page => page.classList.remove('active'));
+                document.querySelector(`[data-page="${pageNumber}"]`).classList.add('active');
+                currentPage = pageNumber;
+                updateButtons();
+            }
+
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    showPage(currentPage - 1);
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentPage < pages.length) {
+                    showPage(currentPage + 1);
+                }
+            });
+
+            updateButtons();
+        </script>
+    </body>
 </html>
