@@ -1,124 +1,272 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventskalender - Tür</title>
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: url('A_realistic_Christmas_village_scene_under_a_stunning_display_of_polar_lights_in_the_night_sky_The_village_features_charming_snow_covered_houses_with_warm_light_glowing_from_the_windows_There_are_decorated_evergree.jpeg');
-            background-size: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-family: 'Mountains of Christmas', cursive;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        .snow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .snowflake {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(720deg);
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adventskalender - Listen in R</title>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
-        }
 
-        .content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            color: #E0E7FF;
-            font-size: 3em;
-            font-weight: 700;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
-        }
-
-        p {
-            color: #A0AEC0;
-            font-size: 1.5em;
-            font-weight: 400;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            color: #E0E7FF;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-<body>
-    <div class="snow" id="snowContainer"></div>
-    <div class="content">
-        <h1>Tür X</h1>
-        <p>Hier kommt der Inhalt für dieses Türchen hin.</p>
-        <a href="../index.html">Zurück zum Adventskalender</a>
-    </div>
-
-    <script>
-        function createSnowflakes() {
-            const snowContainer = document.getElementById('snowContainer');
-            for (let i = 0; i < 100; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.classList.add('snowflake');
-                snowflake.style.left = Math.random() * 100 + 'vw';
-                snowflake.style.width = Math.random() * 3 + 1 + 'px';
-                snowflake.style.height = snowflake.style.width;
-                snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                snowflake.style.animationDelay = Math.random() * -10 + 's';
-                snowContainer.appendChild(snowflake);
+            body {
+                background: url('background.jpeg');
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                font-family: 'Quicksand', sans-serif;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+                color: #ffffff;
+                overflow-x: hidden;
             }
-        }
 
-        createSnowflakes();
-    </script>
-</body>
+            .snow {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .snowflake {
+                position: absolute;
+                background: white;
+                border-radius: 50%;
+                opacity: 0.8;
+                animation: fall linear infinite;
+            }
+
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                }
+            }
+
+            .content {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                max-width: 800px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.656);
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            h1 {
+                color: #E0E7FF;
+                font-size: 2em;
+                font-weight: 700;
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+                margin-bottom: 20px;
+            }
+
+            p {
+                color: #c9ddf7;
+                font-size: 1.2em;
+                font-weight: 400;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+
+            ul {
+                color: #c9ddf7;
+                font-size: 1em;
+                font-weight: 400;
+                margin-left: 40px;
+                margin-bottom: 20px;
+                text-align: left;
+            }
+
+            li {
+                margin-bottom: 10px;
+            }
+
+            .navigation {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 1.2em;
+                color: #E0E7FF;
+                text-decoration: none;
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .nav-button:hover {
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(1.05);
+            }
+
+            .nav-button:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+                transform: none;
+            }
+
+            .page {
+                display: none;
+            }
+
+            .page.active {
+                display: block;
+            }
+
+            pre {
+                background-color: #d8d8d814;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                font-family: 'Courier New', monospace;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                text-align: left;
+                margin: 10px 0;
+                font-size: 0.8em;
+                line-height: 1.4;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="snow" id="snowContainer"></div>
+        <div class="content">
+            <div class="page active" data-page="1">
+                <h1>Türchen 12: Listen in R</h1>
+                <p>Hellooo, heute schauen wir uns Listen an. Allgemein sind sie sehr ähnlich zu Vektoren, sie haben eine Dimension, aber können verschiedene Datentypen speichern. Wir können damit anfangen das du eine einfache Liste mit <code>list()</code> erstellst, die einen Vektor, einen String und eine Zahl enthält.</p>
+            </div>
+
+            <div class="page" data-page="2">
+                <h1>Listen - Seite 2</h1>
+                <p>Lösung:</p>
+                <pre>
+liste = list(vektor = c(1, 2, 3), text = "Hallo", zahl = 42)
+print(liste)
+                </pre>
+                <p>Wie du siehst habe ich hier die Liste mit "keys" definiert. Diese ermöglichen uns das wir nicht nur über die Positionen/Zahlen auf die Elemente zugreifen können, sondern auch so:</p>
+                <ul>
+                    <li>Mit Namen: <code>liste[["vektor"]]</code> oder <code>liste$vektor</code>.</li>
+                    <li>Mit Indizes: <code>liste[[1]]</code> greift auf das erste Element zu.</li>
+                </ul>
+                <p>Ahhhh mir ist gerade aufgefallen das man Vektoren auch mit "keys" definieren und indexen kann, aber die "$" Syntax dort nicht geht. Ahhh das ist so weird, warum ist das so inconsistent, warum?? das macht gar kein sinn.</p>
+                <p>Aber wieder zurück, du hast wahrscheinlich gesehen das das Indexen bei Listen mit <code>[[]]</code> funktioniert und bei Vektoren mit <code>[]</code>. Als Aufgabe kannst du mal das Indexen bei den Listen ausprobieren.</p>
+            </div>
+
+            <div class="page" data-page="3">
+                <h1>Listen - Seite 3</h1>
+                <p>Lösung:</p>
+                <pre>
+vektor = liste$vektor
+print(vektor)
+
+text = liste[[2]]
+print(text)
+
+liste2 = list(c(1, 2, 3), "Hallo", 42)
+
+print(liste2[[1]])
+print(liste2[[3]])
+                </pre>
+            <p>Soooo, das Indexen mit Namen wird aber allgemein nicht so oft verwendet, da wir häufig einfach mit Schleifen arbeiten. Als kleines Extra kannst du mal schauen was passiert wenn du unsere "liste" in eine neue Liste packst und dann auf ein Element zugreifen möchtest. Die Lösung gibt es dann auf der nächsten page :)</p>
+            </div>
+
+            <div class="page" data-page="4">
+                <h1>Listen - Seite 4</h1>
+                <p>Lösung:</p>
+                <pre>
+geschachtelte_liste = list(inner_list = liste, zahl2 = 99)
+
+print(geschachtelte_liste$inner_list$vektor)
+print(geschachtelte_liste$inner_list[[1]])
+                </pre>
+                <p>Eine weitere Möglichkeit die wir bei Listen haben ist das, wir sie in Vektoren umwandlen können. Den Befehl dafür hast du bestimmt schon paar mal benutzt, das kriegst du hin.</p>
+            </div>
+
+            <div class="page" data-page="5">
+                <h1>Listen - Seite 5</h1>
+                <p>Lösung:</p>
+                <pre>
+# Umwandlung in einen Vektor
+vektor_aus_liste = unlist(liste)
+print(vektor_aus_liste)
+                </pre>
+                <p>Das ganze hat aber ein Haken, wie du jetzt bestimmt schon weißt kann der Vektor nur ein Datentyp speichern, so wurde der Vektor in der Liste aufgesplittet und Zahlen allgemein zu charactern. </p>
+                <p>Noch so als kleiner Tipp, bei Listen kann man sich die struktur ganz schön ausgeben mit den Aufruf <code>str()</code>. Unnnd was jetzt vllt. das wichtigste ist was du aus dieser Aufgabe mitnehmen sollst ist, die Frage: "Warum benutzen wir überhaupt Vektoren? Listen können doch anscheinend mehr". Unnnd hier ist auch das Hauptproblem, dadurch das Listen gemischte Datentypen haben, können wir bspw. Operationen wie Mean oder Deviation nicht auf sie anwenden, selbst wenn nur numerische Werte in ihnen enthalten sind müssen wir sie vorher "unlisten". Das macht sie oft dann doch umständlicher in der Nutzung als Vektoren.</p>
+                <p>Okeee, das war alles zu Listen und jetzt bleibt als letztes R-Objekt, das Dataframe übrig, das wir uns morgen anschauen werden, tschauuuuu :]</p>
+            </div>
+
+            <div class="navigation">
+                <button class="nav-button" id="prevButton">Zurück</button>
+                <button class="nav-button" id="nextButton">Weiter</button>
+                <a href="../index.html" class="nav-button">Zum Kalender</a>
+            </div>
+        </div>
+
+        <script>
+            function createSnowflakes() {
+                const snowContainer = document.getElementById('snowContainer');
+                for (let i = 0; i < 100; i++) {
+                    const snowflake = document.createElement('div');
+                    snowflake.classList.add('snowflake');
+                    snowflake.style.left = Math.random() * 100 + 'vw';
+                    snowflake.style.width = Math.random() * 3 + 1 + 'px';
+                    snowflake.style.height = snowflake.style.width;
+                    snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                    snowflake.style.animationDelay = Math.random() * -10 + 's';
+                    snowContainer.appendChild(snowflake);
+                }
+            }
+
+            createSnowflakes();
+
+            const pages = document.querySelectorAll('.page');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            let currentPage = 1;
+
+            function updateButtons() {
+                prevButton.disabled = currentPage === 1;
+                nextButton.disabled = currentPage === pages.length;
+            }
+
+            function showPage(pageNumber) {
+                pages.forEach(page => page.classList.remove('active'));
+                document.querySelector(`[data-page="${pageNumber}"]`).classList.add('active');
+                currentPage = pageNumber;
+                updateButtons();
+            }
+
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    showPage(currentPage - 1);
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentPage < pages.length) {
+                    showPage(currentPage + 1);
+                }
+            });
+
+            updateButtons();
+        </script>
+    </body>
 </html>
