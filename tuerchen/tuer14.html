@@ -1,124 +1,319 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventskalender - Tür</title>
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: url('A_realistic_Christmas_village_scene_under_a_stunning_display_of_polar_lights_in_the_night_sky_The_village_features_charming_snow_covered_houses_with_warm_light_glowing_from_the_windows_There_are_decorated_evergree.jpeg');
-            background-size: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-family: 'Mountains of Christmas', cursive;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        .snow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .snowflake {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(720deg);
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adventskalender - Dataframes in R</title>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
-        }
 
-        .content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            color: #E0E7FF;
-            font-size: 3em;
-            font-weight: 700;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
-        }
-
-        p {
-            color: #A0AEC0;
-            font-size: 1.5em;
-            font-weight: 400;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            color: #E0E7FF;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-<body>
-    <div class="snow" id="snowContainer"></div>
-    <div class="content">
-        <h1>Tür X</h1>
-        <p>Hier kommt der Inhalt für dieses Türchen hin.</p>
-        <a href="../index.html">Zurück zum Adventskalender</a>
-    </div>
-
-    <script>
-        function createSnowflakes() {
-            const snowContainer = document.getElementById('snowContainer');
-            for (let i = 0; i < 100; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.classList.add('snowflake');
-                snowflake.style.left = Math.random() * 100 + 'vw';
-                snowflake.style.width = Math.random() * 3 + 1 + 'px';
-                snowflake.style.height = snowflake.style.width;
-                snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                snowflake.style.animationDelay = Math.random() * -10 + 's';
-                snowContainer.appendChild(snowflake);
+            body {
+                background: url('background.jpeg');
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                font-family: 'Quicksand', sans-serif;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+                color: #ffffff;
+                overflow-x: hidden;
             }
-        }
 
-        createSnowflakes();
-    </script>
-</body>
+            .snow {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .snowflake {
+                position: absolute;
+                background: white;
+                border-radius: 50%;
+                opacity: 0.8;
+                animation: fall linear infinite;
+            }
+
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                }
+            }
+
+            .content {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                max-width: 800px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.656);
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            h1 {
+                color: #E0E7FF;
+                font-size: 2em;
+                font-weight: 700;
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+                margin-bottom: 20px;
+            }
+
+            p {
+                color: #c9ddf7;
+                font-size: 1.2em;
+                font-weight: 400;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+
+            ul {
+                color: #c9ddf7;
+                font-size: 1em;
+                font-weight: 400;
+                margin-left: 40px;
+                margin-bottom: 20px;
+                text-align: left;
+            }
+
+            li {
+                margin-bottom: 10px;
+            }
+
+            .navigation {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 1.2em;
+                color: #E0E7FF;
+                text-decoration: none;
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .nav-button:hover {
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(1.05);
+            }
+
+            .nav-button:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+                transform: none;
+            }
+
+            .page {
+                display: none;
+            }
+
+            .page.active {
+                display: block;
+            }
+
+            pre {
+                background-color: #d8d8d814;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                font-family: 'Courier New', monospace;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                text-align: left;
+                margin: 10px 0;
+                font-size: 0.8em;
+                line-height: 1.4;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="snow" id="snowContainer"></div>
+        <div class="content">
+            <div class="page active" data-page="1">
+                <h1>Türchen 14: Schleifen in R</h1>
+                <p>Heyy, da wir gerade erst die R-Objekte wiederholt haben, können wir uns noch kurz die Schleifen anschauen. Wir starten mal mit der gängigsten, die du wahrscheinlich auch in 99% der Fälle benutzen wirst. Die "for-Schleife". Die Syntax ist ganz easy:</p>
+                <pre>
+for (i in 1:10){
+    print(i)
+}                    
+                </pre> 
+                <p>Wir starten immer mit einen <code>for</code> und dahinter unsere Laufvariable die sich verändert <code>i</code> kombiniert mit den Wertebereich welchen <code>i</code> annehmen soll. Den simplesten Fall siehst du hier oben schon, bei dem wir einen Vektor <code>1:10</code> als Bereich auswählen. Oft ist es aber so das wir die Grenzen nicht wirklich kennen und das ganze dynamischer machen müssen. Wir fangen dabei simpel an:</p>
+            <pre>
+zahlen = c(10, 20, 30, 40)
+            </pre>
+            <p>Deine Task wäre es, den Index und passend dazu den Wert auszugeben, wobei der code auch funktionieren soll wenn sich der Vektor in der größe verändert.</p>
+            </div>
+
+            <div class="page" data-page="2">
+                <h1>Schleifen - Seite 2</h1>
+                <p>Lösung:</p>
+                <pre>
+for (i in 1:length(zahlen)) {
+    cat("Index:", i, "| Wert:", zahlen[i],"\n")
+}
+                </pre>
+                <p>Wennnn wir jetzt mit Matrizen oder Dataframes arbeiten müssen, wäre es auch gut das dynamisch zu machen. Da wir aber erstmal nur eine for-Schleife haben, wäre die Task für:</p>
+                <pre>
+mat = matrix(1:9, nrow = 3, byrow = TRUE)
+
+daten = data.frame(
+    ID = c("Seq1", "Seq2", "Seq3"),
+    Länge = c(1500, 2300, 1890),
+    GC_Gehalt = c(0.45, 0.52, 0.47)
+)
+                </pre>
+                <p>Printe die Zeilen der Matrix und die des Dataframes "schön" aus, jeweils mit einer for-Schleifeee</p>
+            </div>
+                <div class="page" data-page="3">
+                    <h1>Schleifen - Seite 3</h1>
+                    <p>Lösung:</p>
+                    <pre>
+for (i in 1:nrow(mat)) {
+    cat("Zeile", i, ":", mat[i, ],"\n")
+}
+
+for (i in 1:nrow(daten)) {
+    cat("ID:", daten$ID[i], "| Länge:", daten$Länge[i],"| GC-Gehalt:", daten$GC_Gehalt[i], "\n")
+  }
+                    </pre>
+                    <p>Als kleines Addon, man muss auch nicht immer mit indexen arbeiten, wir können auch einfach direkt über einen Vektor laufen:</p>
+                    <pre>
+sammlung = c("Apfel", "Banane", "Kirsche")
+                    </pre>
+                    <p>Versuch mal den Vektor selbst als Wertebereich zu nehmen und dann die Elemente auszugeben.</p>
+                </div>
+
+                <div class="page" data-page="4">
+                    <h1>Schleifen - Seite 4</h1>
+                    <p>Lösung:</p>
+                    <pre>
+for (frucht in sammlung) {
+    cat("Frucht:", frucht,"\n")
+}
+                    </pre>
+                    <p>Okeee, super das wären jetzt so die Basic sachen die man kennen sollte, als nächstes wollen wir uns aber noch Verschachtelte for-Schleifen anschauen. Deine Aufgabe wäre es mithilfe von 2 for-Schleifen die Position z.B. [1,1] und passend dazu den Wert für jeden Eintrag in der Matrix auszugeben, die wir vorhin erstellt haben. Wichtig dabei ist das die Laufindexe in den beiden Schleifen unterschiedlich sein müssen. Warum auch immer fängt man immer mit <code>i</code> an und geht alphabetisch weiter also <code>j</code>. Du musst auch noch beachten das die geschweifte Klammer der ersten Schleife, die zweite umschließt, und entsprechend die zweite Schleife, einmal komplett durchläuft bis die erste Schleife wieder dran ist mit den nächsten Wert. Aber jaaa, das kriegst du hin :]</p>
+                </div>
+
+                <div class="page" data-page="5">
+                    <h1>Schleifen - Seite 5</h1>
+                    <p>Lösung:</p>
+                    <pre>
+for (i in 1:nrow(mat)) {
+    for (j in 1:ncol(mat)) {
+        cat("Element bei [", i, ",", j, "] ist", mat[i, j],"\n")
+    }
+}
+                    </pre>
+                    <p>Alsss nächstes können wir noch so stuff anschauen den man häufig in Verbindung mit schleifen macht, und das wäre das arbeiten mit "Conditions". Also das wir bestimmte Dinge nur tun, wenn der Laufindex es erfüllt. Du kannst mal ganz Basic, für die Zahlen von 1 bis 10 ausgeben, ob sie gerade/ungerade sind, als tipp <code>%%</code> ist praktisch.</p>
+                </div>
+                <div class="page" data-page="6">
+                    <h1>Schleifen - Seite 6</h1>
+                    <p>Lösung:</p>
+                    <pre>
+for (i in 1:10) {
+    if (i %% 2 == 0) {
+        cat(i, "ist gerade\n")
+    } else {
+        cat(i, "ist ungerade\n")
+    }
+}
+                    </pre>
+                    <p>Zuletzt können wir das noch mit <code>break</code> und <code>next</code> Befehlen koppeln. Versuch diesmal nur die geraden Zahlen von 1 bis 10 auszugeben, mithilfe von <code>next</code>. Unnnnd versuch mal, obwohl wir eigentlich bis 10 laufen wollen, schon bei 8 abzubrechen, mit dem <code>break</code> Aufruf.</p>
+                </div>
+
+                <div class="page" data-page="7">
+                    <h1>Schleifen - Seite 7</h1>
+                    <p>Lösung:</p>
+                    <pre>
+for (i in 1:10) {
+    if (i == 8) {
+        cat("Wir stoppen schon bei 8")
+        break
+    }
+    if (i %% 2 != 0) {
+        next
+    }
+    cat(i, "ist gerade \n")
+}
+                    </pre>
+                    <p>Supperrr, wir sollten jetzt das wichtigste zu for-Schleifen abgedeckt haben, morgen schauen wir uns noch die repeat und while schleife an. Die nutzt man nicht wirklich, aber falls Sie in der Klausur drankommen in vorgeschriebenen Code, wäre es trotzdem gut das Konzept dahinter zu verstehen, alsoooooooo hoffentlich bist du jetzt sicherer in for-Schleifen und tschauuu :]</p>
+                </div>
+
+
+            <div class="navigation">
+                <button class="nav-button" id="prevButton">Zurück</button>
+                <button class="nav-button" id="nextButton">Weiter</button>
+                <a href="../index.html" class="nav-button">Zum Kalender</a>
+            </div>
+        </div>
+
+        <script>
+            function createSnowflakes() {
+                const snowContainer = document.getElementById('snowContainer');
+                for (let i = 0; i < 100; i++) {
+                    const snowflake = document.createElement('div');
+                    snowflake.classList.add('snowflake');
+                    snowflake.style.left = Math.random() * 100 + 'vw';
+                    snowflake.style.width = Math.random() * 3 + 1 + 'px';
+                    snowflake.style.height = snowflake.style.width;
+                    snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                    snowflake.style.animationDelay = Math.random() * -10 + 's';
+                    snowContainer.appendChild(snowflake);
+                }
+            }
+
+            createSnowflakes();
+
+            const pages = document.querySelectorAll('.page');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            let currentPage = 1;
+
+            function updateButtons() {
+                prevButton.disabled = currentPage === 1;
+                nextButton.disabled = currentPage === pages.length;
+            }
+
+            function showPage(pageNumber) {
+                pages.forEach(page => page.classList.remove('active'));
+                document.querySelector(`[data-page="${pageNumber}"]`).classList.add('active');
+                currentPage = pageNumber;
+                updateButtons();
+            }
+
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    showPage(currentPage - 1);
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentPage < pages.length) {
+                    showPage(currentPage + 1);
+                }
+            });
+
+            updateButtons();
+        </script>
+    </body>
 </html>
