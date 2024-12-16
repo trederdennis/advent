@@ -150,7 +150,7 @@
         <div class="snow" id="snowContainer"></div>
         <div class="content">
             <div class="page active" data-page="1">
-                <h1>Türchen 15: Kimura-Distanz</h1>
+                <h1>Türchen 16: Kimura-Distanz</h1>
             <p>Heyy, heute schauen wir uns das Kimura 2-Parameter Model an oder kürzer die Kimura Distanz. Dieses Model beachtet 2 Typen von Mutationen einmal Transitions (P) und Transversions (Q). Die Formel ist d = -(1/2) ln[(1-2P-Q)*sqrt(1-2Q)]. Wir wollen jetzt eine Funktion schreiben die P und Q berechnet und so die Distanz von 2 Sequenzen bestimmen kann. Als Gerüst starten wir mit:</p>
             <pre>
 kimura_distance = function(seq1, seq2) {
