@@ -1,124 +1,351 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventskalender - Tür</title>
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: url('A_realistic_Christmas_village_scene_under_a_stunning_display_of_polar_lights_in_the_night_sky_The_village_features_charming_snow_covered_houses_with_warm_light_glowing_from_the_windows_There_are_decorated_evergree.jpeg');
-            background-size: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-family: 'Mountains of Christmas', cursive;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        .snow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .snowflake {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(720deg);
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adventskalender - Dataframes in R</title>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
-        }
 
-        .content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            color: #E0E7FF;
-            font-size: 3em;
-            font-weight: 700;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
-        }
-
-        p {
-            color: #A0AEC0;
-            font-size: 1.5em;
-            font-weight: 400;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            color: #E0E7FF;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-<body>
-    <div class="snow" id="snowContainer"></div>
-    <div class="content">
-        <h1>Tür X</h1>
-        <p>Hier kommt der Inhalt für dieses Türchen hin.</p>
-        <a href="../index.html">Zurück zum Adventskalender</a>
-    </div>
-
-    <script>
-        function createSnowflakes() {
-            const snowContainer = document.getElementById('snowContainer');
-            for (let i = 0; i < 100; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.classList.add('snowflake');
-                snowflake.style.left = Math.random() * 100 + 'vw';
-                snowflake.style.width = Math.random() * 3 + 1 + 'px';
-                snowflake.style.height = snowflake.style.width;
-                snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                snowflake.style.animationDelay = Math.random() * -10 + 's';
-                snowContainer.appendChild(snowflake);
+            body {
+                background: url('background.jpeg');
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                font-family: 'Quicksand', sans-serif;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+                color: #ffffff;
+                overflow-x: hidden;
             }
-        }
 
-        createSnowflakes();
-    </script>
-</body>
+            .snow {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .snowflake {
+                position: absolute;
+                background: white;
+                border-radius: 50%;
+                opacity: 0.8;
+                animation: fall linear infinite;
+            }
+
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                }
+            }
+
+            .content {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                max-width: 800px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.656);
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            h1 {
+                color: #E0E7FF;
+                font-size: 2em;
+                font-weight: 700;
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+                margin-bottom: 20px;
+            }
+
+            p {
+                color: #c9ddf7;
+                font-size: 1.2em;
+                font-weight: 400;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+
+            ul {
+                color: #c9ddf7;
+                font-size: 1em;
+                font-weight: 400;
+                margin-left: 40px;
+                margin-bottom: 20px;
+                text-align: left;
+            }
+
+            li {
+                margin-bottom: 10px;
+            }
+
+            .navigation {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 1.2em;
+                color: #E0E7FF;
+                text-decoration: none;
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .nav-button:hover {
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(1.05);
+            }
+
+            .nav-button:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+                transform: none;
+            }
+
+            .page {
+                display: none;
+            }
+
+            .page.active {
+                display: block;
+            }
+
+            pre {
+                background-color: #d8d8d814;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                font-family: 'Courier New', monospace;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                text-align: left;
+                margin: 10px 0;
+                font-size: 0.8em;
+                line-height: 1.4;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="snow" id="snowContainer"></div>
+        <div class="content">
+            <div class="page active" data-page="1">
+                <h1>Türchen 18: SQL</h1>
+                <p>Heyy, heute schauen wir uns mal SQL an, dafür könnten wir diese weirden librarys in R verwenden oder wir gehen einfach auf https://sqliteonline.com und schauen uns dort mal alle Befehle
+                    an die wir so in der Übung gelernt hatten. Wir nehmen mal die Datenbank aus Übung 4 und auf der Seite kannst du Sie über File hochladen und wenn alles geklappt hat sollte, links der Namen der File stehen mit den drei Tabellen Gene, Omim und Transcript und
+                    dann können wir auch starten.
+                </p>
+                <pre>
+SELECT "Column"
+FROM "Tabelle"
+WHERE "Column erfüllt Bedingung"
+                </pre>
+                <p>Die erste Aufgabe wäre erstmal das du dir die Gene Tabelle anzeigen lässt. Als Tipp, used man den <code>*</code> um alle Spalten auszuwählen. Unnnd oben auf den "Run" Button drückenn.</p>
+            </div>
+            
+            <div class="page" data-page="2">
+                <h1>SQL - Seite 2</h1>
+                <p>Lösung:</p>
+                <pre>
+SELECT *
+From Gene
+                </pre>
+                <p>Wenn alles geklappt hat, solltest du jetzt, die Columns: GenestableID, Genedescription, Strand, Genestart(bp), Genename und Geneend(bp) sehen. Wir lassen mal diesen Tab geöffnet und klicken auf das Symbol mit dem Kreuz in der Box
+                     um so ein neues Fenster zu öffnen in den wir Befehle reinpacken können. Dort können wir mal mit der nächsten Aufgabe anfangen, und achso ich beschränk mich mal nur auf die Aufrufe die wir auch in der Übung hatten, bzw. in der Vorlesung dazu gab es keine Übersicht alsoooo. Zurück zur Aufgabe, da du jetzt die Namen der Columns weißt, kannst du mal nur die <code>GenestableID</code> und <code>Strand</code> Columns auswählen</p>
+           </div>
+            
+            <div class="page" data-page="3">
+                <h1>SQL - Seite 3</h1>
+                <p>Lösung:</p>
+                <pre>
+SELECT GenestableID, Strand
+FROM Gene
+                </pre>
+                <p>Okey, das ist jetzt erstmal die Basic Syntax wenn wir uns eine Tabelle genauer anschauen wollen, bzw. nur spezifische Columns haben wollen. Als nächstes können wir noch eine Bedingung dazuoacken, dafür brauchen wir das <code>WHERE</code> und die Aufgabe ist es jetzt von diesen beiden Columns alle Rows auszuwählen die bei Strand den Wert <code>-1</code> haben. Als Tipp, musst du das <code>-1</code> in <code>''</code> packen und hier usen wir nicht das <code>==</code> sondern einfach <code>=</code> </p>
+            </div>
+            
+            <div class="page" data-page="4">
+                <h1>SQL - Seite 4</h1>
+                <p>Lösung:</p>
+                <pre>
+SELECT GenestableID, Strand
+FROM Gene
+WHERE Strand = '-1'
+                </pre>
+                <p>Suppper, als nächstes wollen wir zwei Tabellen verbinden. Das funktioniert nur wenn beide eine Column haben, in der Informationen vom selben Typ gespeichert sind. Alsooo, kannst du dir mal ein neues Fenster mit dem Plus in der Box aufmachen und dir alle Columns von der Transcript Tabelle ausgeben.</p>
+                <p>Du solltest dann easy die Column finden die sowohl in der Transcript als auch Gene Tabelle drin ist. Mit dieser können wir jetzt beide Tabelle joinen. Die Syntax ist:</p>
+                <pre>
+SELECT 
+FROM "Tabelle1"
+WHERE 
+JOIN "Tabelle2"   
+ON "Tabelle1.Spaltenname" = "Tabelle2.Spaltenname"                
+                </pre>
+            </div>          
+
+            <div class="page" data-page="5">
+                <h1>SQL - Seite 5</h1>
+                <p>Lösung:</p>
+                <pre>
+SELECT *
+FROM Gene
+JOIN Transcript
+ON Transcript.GenestableID = Gene.GenestableID
+                </pre>
+                <p>Die beiden Tabellen wurden jetzt zusammengeführt. Wir können jetzt ensprechend mit SELECT wieder nur bestimme Spalten auswählen, zum Beispiel nur die TranscriptstableID und Transcriptstart(bp).
+                    Danach kannst du mal versuchen die Tabelle nach der Genestart(bp) Column zu sortieren, einmal aufsteigend und einmal absteigend, die Syntax dafür ist:
+                </p> 
+                <pre>
+SELECT
+From
+WHERE
+ORDER BY "Tabelle.Spaltenname + ASC oder DESC"
+</pre>
+            <p>Achsoooo, und weil die die Column mit einer Klammer benannt haben müssen wir, wenn wir darauf zugreifen wollen Sie nochmal in eine doppelte Klammer packen also <code>[Genestart(bp)]</code></p>
+            </div>
+
+            <div class="page" data-page="6">
+                <h1>SQL - Seite 6</h1>
+                <p>Lösung:</p>
+                <pre>
+SELECT *
+From Gene
+JOIN Transcript
+ON Transcript.GenestableID = Gene.GenestableID
+ORDER BY Gene.[Genestart(bp)] ASC
+
+# Für die Absteigende sortierung
+SELECT *
+From Gene
+JOIN Transcript
+ON Transcript.GenestableID = Gene.GenestableID
+ORDER BY Gene.[Genestart(bp)] DESC
+                </pre>
+                <p>Als nächstes können wir uns noch anschauen was wir für zusätzliche Bedingungen in die SELECT row packen können, wir starten mal mit den DISTINCT. Dafür wollen wir aber mal einen anderen Aufruf erstellen.
+                    Kannst du aus der Tabelle Gene, nur die Column "Genename" auswählen und darauf DISTINCT anwenden
+                </p>
+            </div>
+
+            <div class="page" data-page="7">
+                <h1>SQL - Seite 7</h1>
+                <p>Lösung:</p>
+                <pre>
+SELECT DISTINCT Genename
+FROM Gene                    
+                </pre>
+                <p>Soooo, dies sollte alle doppelten Einträge in dieser Column gelöscht haben, das können wir aber jetzt noch nicht wirklich erkennen. Zum Gegenprüfen können wir einen anderen Aufruf usen: COUNT(),
+                    den wir auch in die SELECT row packen können. Du kannst dir mal ausgeben lassen wie viele rows wir mit und ohne den DISTINCT haben. Zusätzlich kannst du diesen Wert als neue Spalte Speichern mit der Syntax:
+                </p>
+                <pre>
+SELECT spalte1, (Aufruf/Spaltenname) AS deinname
+From tabelle
+                </pre>
+            </div>
+
+            <div class="page" data-page="8">
+                <h1>SQL - Seite 8</h1>
+                <p>Lösung:</p>
+                <pre>
+# Count ohne dem Distinct
+SELECT GenestableID, COUNT(Genename) AS NormalerCount
+FROM Gene 
+
+# Count mit dem Distinct
+SELECT COUNT(DISTINCT Genename) AS DistincterCount
+FROM Gene                    
+                </pre>
+                <p>Suuuper, jetzt haben wir schon fast alle Aufrufe durch die wir machen können, die beiden Letzten sind wieder welche die wir in die SELECT row packen können und das
+                    sind einmal MAX() und AVG(), es gibt auch noch MIN(), aber das wurd niwo genannt alsoo kein plan, man wendet diese entsprechend auch nur auf Columns an die numerische Werte enthalten. Du kannst dir wahrscheinlich schon denken was diese machen.
+                     Als Aufgabe sollst du dir mal eine Übersichtstabelle, zu der Spalte Genestart(bp) erstellen, die du in der Tabelle Gene findest. Alsooo, wir wollen eine Column "Maximum" die den Maximal Wert enthält, eine Column "Minimum", eine Column "Average" und noch die beiden Count Columns.
+                </p>
+            </div>
+
+            <div class="page" data-page="9">
+                <h1>SQL - Seite 9</h1>
+                <p>Lösung:</p>
+                <pre>
+SELECT MAX([Genestart(bp)]) AS Maximum, MIN([Genestart(bp)]) AS Minimum, AVG([Genestart(bp)]) AS Average, COUNT([Genestart(bp)]) AS NormalerCount, COUNT(DISTINCT [Genestart(bp)]) AS DistinctCount
+FROM Gene  
+                </pre>
+                <p>Das wars zu SQL hoffentlich hast du jetzt einen besseren Überblick von den Befehlen und wie man sie anwendet und das wars für heute, tschaauuuu :]</p>
+            </div>
+
+
+
+            <div class="navigation">
+                <button class="nav-button" id="prevButton">Zurück</button>
+                <button class="nav-button" id="nextButton">Weiter</button>
+                <a href="../index.html" class="nav-button">Zum Kalender</a>
+            </div>
+        </div>
+
+        <script>
+            function createSnowflakes() {
+                const snowContainer = document.getElementById('snowContainer');
+                for (let i = 0; i < 100; i++) {
+                    const snowflake = document.createElement('div');
+                    snowflake.classList.add('snowflake');
+                    snowflake.style.left = Math.random() * 100 + 'vw';
+                    snowflake.style.width = Math.random() * 3 + 1 + 'px';
+                    snowflake.style.height = snowflake.style.width;
+                    snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                    snowflake.style.animationDelay = Math.random() * -10 + 's';
+                    snowContainer.appendChild(snowflake);
+                }
+            }
+
+            createSnowflakes();
+
+            const pages = document.querySelectorAll('.page');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            let currentPage = 1;
+
+            function updateButtons() {
+                prevButton.disabled = currentPage === 1;
+                nextButton.disabled = currentPage === pages.length;
+            }
+
+            function showPage(pageNumber) {
+                pages.forEach(page => page.classList.remove('active'));
+                document.querySelector(`[data-page="${pageNumber}"]`).classList.add('active');
+                currentPage = pageNumber;
+                updateButtons();
+            }
+
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    showPage(currentPage - 1);
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentPage < pages.length) {
+                    showPage(currentPage + 1);
+                }
+            });
+
+            updateButtons();
+        </script>
+    </body>
 </html>
