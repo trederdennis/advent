@@ -181,7 +181,7 @@ From Gene
 SELECT GenestableID, Strand
 FROM Gene
                 </pre>
-                <p>Okey, das ist jetzt erstmal die Basic Syntax wenn wir uns eine Tabelle genauer anschauen wollen, bzw. nur spezifische Columns haben wollen. Als nächstes können wir noch eine Bedingung dazuoacken, dafür brauchen wir das <code>WHERE</code> und die Aufgabe ist es jetzt von diesen beiden Columns alle Rows auszuwählen die bei Strand den Wert <code>-1</code> haben. Als Tipp, musst du das <code>-1</code> in <code>''</code> packen und hier usen wir nicht das <code>==</code> sondern einfach <code>=</code> </p>
+                <p>Okey, das ist jetzt erstmal die Basic Syntax wenn wir uns eine Tabelle genauer anschauen wollen, bzw. nur spezifische Columns haben wollen. Als nächstes können wir noch eine Bedingung dazupacken, dafür brauchen wir das <code>WHERE</code> und die Aufgabe ist es jetzt von diesen beiden Columns alle Rows auszuwählen die bei Strand den Wert <code>-1</code> haben. Als Tipp, musst du das <code>-1</code> in <code>''</code> packen und hier usen wir nicht das <code>==</code> sondern einfach <code>=</code> </p>
             </div>
             
             <div class="page" data-page="4">
@@ -267,7 +267,7 @@ From tabelle
                 <p>Lösung:</p>
                 <pre>
 # Count ohne dem Distinct
-SELECT GenestableID, COUNT(Genename) AS NormalerCount
+SELECT COUNT(Genename) AS NormalerCount
 FROM Gene 
 
 # Count mit dem Distinct
