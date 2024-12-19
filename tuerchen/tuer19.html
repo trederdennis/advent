@@ -1,124 +1,339 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventskalender - Tür</title>
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: url('A_realistic_Christmas_village_scene_under_a_stunning_display_of_polar_lights_in_the_night_sky_The_village_features_charming_snow_covered_houses_with_warm_light_glowing_from_the_windows_There_are_decorated_evergree.jpeg');
-            background-size: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-family: 'Mountains of Christmas', cursive;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        .snow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .snowflake {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(720deg);
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adventskalender - Dataframes in R</title>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
-        }
 
-        .content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            color: #E0E7FF;
-            font-size: 3em;
-            font-weight: 700;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
-        }
-
-        p {
-            color: #A0AEC0;
-            font-size: 1.5em;
-            font-weight: 400;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            color: #E0E7FF;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-<body>
-    <div class="snow" id="snowContainer"></div>
-    <div class="content">
-        <h1>Tür X</h1>
-        <p>Hier kommt der Inhalt für dieses Türchen hin.</p>
-        <a href="../index.html">Zurück zum Adventskalender</a>
-    </div>
-
-    <script>
-        function createSnowflakes() {
-            const snowContainer = document.getElementById('snowContainer');
-            for (let i = 0; i < 100; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.classList.add('snowflake');
-                snowflake.style.left = Math.random() * 100 + 'vw';
-                snowflake.style.width = Math.random() * 3 + 1 + 'px';
-                snowflake.style.height = snowflake.style.width;
-                snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                snowflake.style.animationDelay = Math.random() * -10 + 's';
-                snowContainer.appendChild(snowflake);
+            body {
+                background: url('background.jpeg');
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                font-family: 'Quicksand', sans-serif;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+                color: #ffffff;
+                overflow-x: hidden;
             }
-        }
 
-        createSnowflakes();
-    </script>
-</body>
+            .snow {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .snowflake {
+                position: absolute;
+                background: white;
+                border-radius: 50%;
+                opacity: 0.8;
+                animation: fall linear infinite;
+            }
+
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                }
+            }
+
+            .content {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                max-width: 800px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.656);
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            h1 {
+                color: #E0E7FF;
+                font-size: 2em;
+                font-weight: 700;
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+                margin-bottom: 20px;
+            }
+
+            p {
+                color: #c9ddf7;
+                font-size: 1.2em;
+                font-weight: 400;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+
+            ul {
+                color: #c9ddf7;
+                font-size: 1em;
+                font-weight: 400;
+                margin-left: 40px;
+                margin-bottom: 20px;
+                text-align: left;
+            }
+
+            li {
+                margin-bottom: 10px;
+            }
+
+            .navigation {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 1.2em;
+                color: #E0E7FF;
+                text-decoration: none;
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .nav-button:hover {
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(1.05);
+            }
+
+            .nav-button:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+                transform: none;
+            }
+
+            .page {
+                display: none;
+            }
+
+            .page.active {
+                display: block;
+            }
+
+            pre {
+                background-color: #d8d8d814;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                font-family: 'Courier New', monospace;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                text-align: left;
+                margin: 10px 0;
+                font-size: 0.8em;
+                line-height: 1.4;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="snow" id="snowContainer"></div>
+        <div class="content">
+            <div class="page active" data-page="1">
+                <h1>Türchen 19: String Handeling</h1>
+                <p>Ellooooo, heute hab ich mir überlegt das wir uns nochmal übersichtlich anschauen, wie wir mit Strings/Character-Vektoren umgehen können und was die Basic Aufrufe dafür sind. Wir starten mal damit, das du bestimmen sollst wie viele Character diese Sequenz hat:</p>
+<pre>
+dna_seq = "ACGTACGTGAC"
+</pre> 
+            </div>
+
+            <div class="page" data-page="2">
+                <h1>String Handeling - Seite 2</h1>
+                <p>Lösung:</p>
+                <pre>
+dna_seq = "ACGTACGTGAC"
+
+dna_length = nchar(dna_seq)
+
+cat("Länge der Sequenz:", dna_length, "\n")
+                </pre>
+                <p>Das wäre der erste wichtige Aufruf <code>nchar</code>. Als nächstes wollen wir in der Sequenz alle "A" durch "G" ersetzen,
+                dafür gibt es den Aufruf <code>gsub()</code>, wie du ihn benutzt kannst du ausprobieren oder mit <code>?gsub</code> herausfinden.</p>
+            </div>
+
+
+            <div class="page" data-page="3">
+                <h1>String Handeling - Seite 3</h1>
+                <p>Lösung:</p>
+                <pre>
+dna_seq = "ACGTACGTGAC"
+
+dna_replaced = gsub("A", "G", dna_seq)
+
+cat("Original-Sequenz:", dna_seq, "\n")
+cat("Ersetzte Sequenz:", dna_replaced, "\n")
+
+                </pre>
+                <p>So als nächstes wollen wir nur die ersten 5 Basen der Sequenz haben und das geht mit <code>substr()</code>. Hier kannst du wieder rumprobieren.</p>
+            </div>    
+
+            <div class="page" data-page="4">
+                <h1>String Handeling - Seite 4</h1>
+                <p>Lösung:</p>
+                <pre>
+dna_seq = "ACGTACGTGAC"
+
+first_5_bases = substr(dna_seq, 1, 5)
+
+cat("Original-Sequenz:", dna_seq, "\n")
+cat("Erste 5 Basen:", first_5_bases, "\n")
+                </pre>
+                <p>Okööö, jetzt wird es ein bisschen schwerer, wir wollen die Sequenz immer in Gruppen von 3 Basen aufteilen. Dafür wäre es smart 2 Vektoren zu erstellen,
+                    mit den Start und Endpositionen. Das weirde in R ist jetzt aber das <code>substr()</code> keine Vektoren handln kann für die Positionen, aber die
+                    Funktion <code>substring()</code> schon. Das macht das ganze so unübersichtlich, inconsistent, weird kein plan warum warum??? Alleine das die beiden
+                    Funktionen so ähnlich benannt sind und der unterschied aus der Dokumentation nicht klar wird... Aber ja wir brauchen zum lösen die <code>substring()</code>
+                    Funktion in kombination mit 2 Extra Vektoren oder du findest deinen eigenen Weg mit for-Schleifen oso, aber jaaa. 
+                </p>
+            </div>
+
+            <div class="page" data-page="5">
+                <h1>String Handeling - Seite 5</h1>
+                <p>Lösung:</p>
+                <pre>
+dna_seq = "ACGTACGTGAC"
+
+dna_length = nchar(dna_seq)
+
+start_positions = seq(1, dna_length, 3)  # Startpositionen: 1, 4, 7, ...
+end_positions = pmin(start_positions + 2, dna_length)
+
+cat("Startpositionen:", start_positions, "\n")
+cat("Endpositionen:", end_positions, "\n")
+
+codons = substring(dna_seq, start_positions, end_positions)
+
+cat("Codons:", codons, "\n")
+                </pre>
+                <p>Wenn wir jetzt <code>substr()</code> benutzen wollten, müssten wir das so über eine for-Schleife machen:</p>
+                <pre>
+codons = c()
+for (i in seq_along(start_positions)) {
+  codon = substr(dna_seq, start_positions[i], end_positions[i])
+  codons = c(codons, codon)
+}
+
+cat("Codons:",codons)
+                </pre>
+                <p>Aber jaa, jetzt weißt du bescheid das es einen unterschied zwischen den beiden Funktionen gibt. Als nächstes wollen wir herausfinden ob das "G" in
+                    unserer Sequenz vorkommt. Das geht mit <code>grepl()</code>. Das "l" im Aufruf steht dabei für logic, also das wir ein TRUE zurückbekommen, anstelle
+                    von einer "1", je nachdem was man möchte kann man dann nur <code>grep()</code> für die "1" benutzen. 
+                </p>
+            </div>
+
+            <div class="page" data-page="6">
+                <h1>String Handeling - Seite 6</h1>
+                <p>Lösung:</p>
+                <pre>
+dna_seq = "ACGTACGTGAC"
+
+contains_G = grepl("G", dna_seq)
+
+cat("Kommt die Base G vor?:", contains_G, "\n")
+                </pre>
+                <p>Soooo, wir wollen als nächstes aber auch die Positionen haben, dafür brauchen wir <code>gregexpr()</code> und wir müssen hierbei beachten das Ergebnis zu unlisten. Alsooo kannst du als nächstes die Positionen von "A" in der Sequenz ausgeben.</p>
+            </div>
+
+            <div class="page" data-page="7">
+                <h1>String Handeling - Seite 7</h1>
+                <p>Lösung:</p>
+                <pre>
+dna_seq = "ACGTACGTGAC"
+
+positions_A = unlist(gregexpr("A", dna_seq))
+
+cat("Position(en) der Base A:", positions_A, "\n")
+                </pre>
+                <p>Diesen Aufruf kannst du auch easy anpassen, sodass du dir auch ausgeben kannst wie oft bspw eine pattern oder das "A" vorkommt, das wäre deine nächste task.</p>
+            </div>
+
+            <div class="page" data-page="8">
+                <h1>String Handeling - Seite 8</h1>
+                <p>Lösung:</p>
+                <pre>
+dna_seq = "ACGTACGTGAC"
+
+pattern = "A"
+pattern_count = length(unlist(gregexpr(pattern, dna_seq)))
+
+cat("Die Base", pattern, "kommt", pattern_count, "Mal vor.\n")
+                </pre>
+                <p>Joaaaaa, das waren mal alle wichtigen Aufrufe zum String Handeling, ein bisschen zusammengefasst und jaa hoffentlich hat es dir geholfen und tschauuu :]</p>
+            </div>
+
+            <div class="navigation">
+                <button class="nav-button" id="prevButton">Zurück</button>
+                <button class="nav-button" id="nextButton">Weiter</button>
+                <a href="../index.html" class="nav-button">Zum Kalender</a>
+            </div>
+        </div>
+
+        <script>
+            function createSnowflakes() {
+                const snowContainer = document.getElementById('snowContainer');
+                for (let i = 0; i < 100; i++) {
+                    const snowflake = document.createElement('div');
+                    snowflake.classList.add('snowflake');
+                    snowflake.style.left = Math.random() * 100 + 'vw';
+                    snowflake.style.width = Math.random() * 3 + 1 + 'px';
+                    snowflake.style.height = snowflake.style.width;
+                    snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                    snowflake.style.animationDelay = Math.random() * -10 + 's';
+                    snowContainer.appendChild(snowflake);
+                }
+            }
+
+            createSnowflakes();
+
+            const pages = document.querySelectorAll('.page');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            let currentPage = 1;
+
+            function updateButtons() {
+                prevButton.disabled = currentPage === 1;
+                nextButton.disabled = currentPage === pages.length;
+            }
+
+            function showPage(pageNumber) {
+                pages.forEach(page => page.classList.remove('active'));
+                document.querySelector(`[data-page="${pageNumber}"]`).classList.add('active');
+                currentPage = pageNumber;
+                updateButtons();
+            }
+
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    showPage(currentPage - 1);
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentPage < pages.length) {
+                    showPage(currentPage + 1);
+                }
+            });
+
+            updateButtons();
+        </script>
+    </body>
 </html>
