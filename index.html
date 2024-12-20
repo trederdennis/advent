@@ -251,38 +251,28 @@
 
     <a href="tuerchen/hilfe.html" class="sos-help-button">Hilfe</a>
 
-    <div class="modal" id="lockModal">
-        <div class="modal-content">
-            <h2>Heyyy, es ist noch zu frühh :O</h2>
-            <button class="nav-button" onclick="closeLockModal()">Verstanden</button>
-        </div>
-    </div>
-
     <script>
         function optimizeBackgroundImage() {
-        const body = document.body;
-        const img = new Image();
-        img.src = 'tuerchen/background.jpeg';
-        
-        img.onload = function() {
-            const aspectRatio = img.width / img.height;
-            const windowAspectRatio = window.innerWidth / window.innerHeight;
-            
-            if (aspectRatio > windowAspectRatio) {
-                // Wenn das Bild breiter ist als der Bildschirm
-                body.style.backgroundSize = 'auto 100%';
-            } else {
-                // Wenn das Bild höher ist als der Bildschirm
-                body.style.backgroundSize = '100% auto';
-            }
-        };
+            const body = document.body;
+            const img = new Image();
+            img.src = 'tuerchen/background.jpeg';
 
-        // Aktualisiere bei Größenänderung des Fensters
-        window.addEventListener('resize', optimizeBackgroundImage);
-    }
+            img.onload = function() {
+                const aspectRatio = img.width / img.height;
+                const windowAspectRatio = window.innerWidth / window.innerHeight;
 
-// Rufen Sie die Funktion nach dem Laden der Seite auf
-window.addEventListener('load', optimizeBackgroundImage);
+                if (aspectRatio > windowAspectRatio) {
+                    body.style.backgroundSize = 'auto 100%';
+                } else {
+                    body.style.backgroundSize = '100% auto';
+                }
+            };
+
+            window.addEventListener('resize', optimizeBackgroundImage);
+        }
+
+        window.addEventListener('load', optimizeBackgroundImage);
+
         function createSnowflakes() {
             const snowContainer = document.getElementById('snowContainer');
             for (let i = 0; i < 100; i++) {
@@ -303,36 +293,10 @@ window.addEventListener('load', optimizeBackgroundImage);
                 const door = document.createElement('a');
                 door.classList.add('door');
                 door.setAttribute('data-number', i);
-                door.href = `tuerchen/tuer${i}.html`; // Verweis auf den Ordner 'tuerchen'
-                
-                door.addEventListener('click', (e) => {
-                    const currentDate = new Date();
-                    const adventStart = new Date(2024, 11, 1);
-                    const adventEnd = new Date(2024, 11, 24);
-
-                    if (currentDate < adventStart || currentDate > adventEnd || 
-                        currentDate.getDate() < i) {
-                        e.preventDefault();
-                        door.classList.add('locked');
-                        showLockModal();
-                    }
-                });
+                door.href = `tuerchen/tuer${i}.html`;
 
                 calendarContainer.appendChild(door);
             }
-        }
-
-        function showLockModal() {
-            const modal = document.getElementById('lockModal');
-            const modalContent = modal.querySelector('.modal-content');
-
-            modal.style.display = 'flex';
-            modalContent.classList.add('large-modal');
-        }
-
-        function closeLockModal() {
-            const modal = document.getElementById('lockModal');
-            modal.style.display = 'none';
         }
 
         createSnowflakes();
