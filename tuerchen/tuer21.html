@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventskalender - Tür</title>
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
+    <title>Adventskalender - Bayes Theorem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,11 +13,12 @@
         }
 
         body {
-            background: url('A_realistic_Christmas_village_scene_under_a_stunning_display_of_polar_lights_in_the_night_sky_The_village_features_charming_snow_covered_houses_with_warm_light_glowing_from_the_windows_There_are_decorated_evergree.jpeg');
-            background-size: 100%;
-            background-position: center;
+            background: url('background.jpeg');
+            background-size: cover;
+            background-position: center center;
             background-repeat: no-repeat;
-            font-family: 'Mountains of Christmas', cursive;
+            background-attachment: fixed;
+            font-family: 'Quicksand', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -28,97 +29,257 @@
             overflow-x: hidden;
         }
 
-        .snow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .snowflake {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(720deg);
-            }
-        }
-
         .content {
             position: relative;
             z-index: 2;
             text-align: center;
             max-width: 800px;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.656);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
             color: #E0E7FF;
-            font-size: 3em;
+            font-size: 2em;
             font-weight: 700;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
             margin-bottom: 20px;
         }
 
         p {
-            color: #A0AEC0;
-            font-size: 1.5em;
+            color: #c9ddf7;
+            font-size: 1.2em;
             font-weight: 400;
+            margin-bottom: 10px;
+            text-align: left;
         }
 
-        a {
-            display: inline-block;
+        ul {
+            color: #c9ddf7;
+            font-size: 1em;
+            font-weight: 400;
+            margin-left: 40px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
             margin-top: 20px;
+        }
+
+        .nav-button {
             padding: 10px 20px;
             font-size: 1.2em;
             color: #E0E7FF;
             text-decoration: none;
             background: rgba(255, 255, 255, 0.2);
+            border: none;
             border-radius: 10px;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        a:hover {
+        .nav-button:hover {
             background: rgba(255, 255, 255, 0.5);
             transform: scale(1.05);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        pre {
+            background-color: #d8d8d814;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: left;
+            margin: 10px 0;
+            font-size: 0.8em;
+            line-height: 1.4;
         }
     </style>
 </head>
 <body>
-    <div class="snow" id="snowContainer"></div>
     <div class="content">
-        <h1>Tür X</h1>
-        <p>Hier kommt der Inhalt für dieses Türchen hin.</p>
-        <a href="../index.html">Zurück zum Adventskalender</a>
+        <div class="page active" data-page="1">
+            <h1>Türchen 21: Clustering</h1>
+            <p>Alloooo, wir gucken uns heute die Distanzmaße an, die beim Clustering für Genexpressionsprofilen benutzt werden, alsooo die Euklidische Distanz, die Manhatten Distanz und die Korrelationsdistanz.
+                Wir starten mal ganz simpel mit der Euklidischen Distanz: 
+            </p>
+            <img src="euklid.png" alt="Markovkette" style="margin-top: 20px; max-width: 50%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">
+            <p>Deine Aufgabe wäre es, ersmal eine Funktion zu schreiben die die Euklidische Distanz für zwei der Vektoren aus den folgenden Profil berechnet:</p>
+            <pre>
+x1 = c(2, 4, 5, 6)
+x2 = c(0.5, 1, 1.25, 1.5)
+x3 = c(1.5, 1, 0.75, 0.5)
+x4 = c(2.5, 3.5, 4.5, 1)
+            </pre>
+
+        </div>
+
+        <div class="page" data-page="2">
+            <h1>Clustering - Seite 2</h1>
+            <p>Lösung:</p>
+            <pre>
+euclidean_distance = function(x, y) {
+    distance = sqrt(sum((x - y)^2))
+    return(distance)
+}
+
+print(euclidean_distance(x1, x2))
+            </pre>
+            <p>Okey, das war nicht schwer, als nächstes schauen wir uns die Manhatten Distanz an:</p>
+            <img src="manhatten.png" alt="Markovkette" style="margin-top: 20px; max-width: 50%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">
+            <p>Dafür kannst du wieder eine Funktion schreiben, die zwei der vier Vektoren benutzt.</p>
+        </div>
+
+        <div class="page" data-page="3">
+            <h1>Clustering - Seite 3</h1>
+            <p>Lösung:</p>
+<pre>
+manhattan_distance = function(x, y) {
+    distance = sum(abs(x - y))
+    return(distance)
+}
+
+print(manhattan_distance(x1, x3))
+</pre>
+            <p>Superr, die nächste ist die Korrelationsdistanz, die ein bisschen aufwendiger wird, mit der Formel:</p>
+            <img src="korrela.png" alt="Markovkette" style="margin-top: 20px; max-width: 50%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">
+            <p>Unnnnd wir wollen wieder das selbe, wie bei den beiden anderen Distanzen umsetzen.</p>
+
+        </div>
+        <div class="page" data-page="4">
+            <h1>Clustering - Seite 4</h1>
+            <p>Lösung:</p>
+            <pre>
+correlation_distance = function(x, y) {
+    mean_x = mean(x)
+    mean_y = mean(y)
+    
+    numerator = sum((x - mean_x) * (y - mean_y))
+    denominator = sqrt(sum((x - mean_x)^2)) * sqrt(sum((y - mean_y)^2))
+    
+    correlation = numerator / denominator
+    
+    distance = 1 - correlation
+    return(distance)
+}
+
+print(correlation_distance(x1, x2))  
+            </pre>
+            <p>Okey, jetzt wollen wir aber auch das ganze Profil benutzen und dafür können wir eine Funktion schreiben, die das Profile als matrix bekommt:</p>
+            <pre>
+profiles = matrix(c(2, 4, 5, 6, 
+                    0.5, 1, 1.25, 1.5, 
+                    1.5, 1, 0.75, 0.5, 
+                    2.5, 3.5, 4.5, 1), 
+                    nrow = 4, byrow = TRUE)
+            </pre>
+            <p>Unnnd dann die jeweilige distance_function die man haben möchte:</p>
+            <pre>
+euclidean_matrix = pairwise_distances(profiles, euclidean_distance)
+            </pre>
+            <p>Und so die pairwise distance matrix für alle Profile in einen berechnet, dafür braucht man zwei for-Schleifen und wir können ausnutzen das die Matrix symmetrisch sein wird</p>
+        </div>
+
+        <div class="page" data-page="5">
+            <h1>Clustering- Seite 5</h1>
+            <p>Lösung:</p>
+            <pre>
+pairwise_distances = function(profiles, distance_function) {
+    n = nrow(profiles)
+    dist_matrix = matrix(0, n, n)
+    
+    for (i in 1:n) {
+        for (j in i:n) {
+        dist_matrix[i, j] = distance_function(profiles[i, ], profiles[j, ])
+        dist_matrix[j, i] = dist_matrix[i, j] # Symmetrisch
+        }
+    }
+    return(dist_matrix)
+}
+                  
+# testen
+euclidean_matrix = pairwise_distances(profiles, euclidean_distance)
+print(euclidean_matrix)         
+            </pre>
+            <p>Wir können uns das noch ganz easy visualisieren mit:</p>
+            <pre>
+heatmap(euclidean_matrix, main = "Euklidische Distanzmatrix", col = heat.colors(10))
+
+dist_obj = as.dist(euclidean_matrix)
+hc = hclust(dist_obj)
+plot(hc, main = "Dendrogramm für unsere Genexpressionsprofile")
+            </pre>
+            <p>Jooooaaa, das visualisieren ist ein bissl zu spezifisch deswegen einfach direkt der Code. Aber jaaa, das war es wieder. Jetzt kannst du dich maybe besser
+                an die Distanzmaße für das Clustering erinnern und tschauuuuu :]
+            </p>
+        </div>
+
+
+
+        <div class="navigation">
+            <button class="nav-button" id="prevButton">Zurück</button>
+            <button class="nav-button" id="nextButton">Weiter</button>
+            <a href="../index.html" class="nav-button">Zum Kalender</a>
+        </div>
     </div>
 
     <script>
-        function createSnowflakes() {
-            const snowContainer = document.getElementById('snowContainer');
-            for (let i = 0; i < 100; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.classList.add('snowflake');
-                snowflake.style.left = Math.random() * 100 + 'vw';
-                snowflake.style.width = Math.random() * 3 + 1 + 'px';
-                snowflake.style.height = snowflake.style.width;
-                snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                snowflake.style.animationDelay = Math.random() * -10 + 's';
-                snowContainer.appendChild(snowflake);
-            }
+        const pages = document.querySelectorAll('.page');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        let currentPage = 1;
+
+        function updateButtons() {
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage === pages.length;
         }
 
-        createSnowflakes();
+        function showPage(pageNumber) {
+            pages.forEach(page => page.classList.remove('active'));
+            document.querySelector(`[data-page="${pageNumber}"]`).classList.add('active');
+            currentPage = pageNumber;
+            updateButtons();
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentPage < pages.length) {
+                showPage(currentPage + 1);
+            }
+        });
+
+        updateButtons();
     </script>
 </body>
 </html>
