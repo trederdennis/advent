@@ -179,12 +179,12 @@ berechne_metriken = function(conf_matrix) {
     FP = conf_matrix["True_Negativ", "Predicted_Positiv"]
     TP = conf_matrix["True_Positiv", "Predicted_Positiv"]
     
-    genauigkeit <- (TP + TN) / (TN + FN + FP + TP)
-    fehlerrate <- (FN + FP) / (TN + FN + FP + TP)
-    sensitivitaet <- TP / (TP + FN)
-    spezifitaet <- TN / (TN + FP)
-    ppv <- TP / (TP + FP)
-    npv <- TN / (TN + FN)
+    genauigkeit = (TP + TN) / (TN + FN + FP + TP)
+    fehlerrate = (FN + FP) / (TN + FN + FP + TP)
+    sensitivitaet = TP / (TP + FN)
+    spezifitaet = TN / (TN + FP)
+    ppv = TP / (TP + FP)
+    npv = TN / (TN + FN)
     
     return(list(
         Genauigkeit = genauigkeit,
