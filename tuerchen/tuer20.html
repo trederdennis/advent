@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventskalender - Tür</title>
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
+    <title>Adventskalender - Bayes Theorem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,11 +13,12 @@
         }
 
         body {
-            background: url('A_realistic_Christmas_village_scene_under_a_stunning_display_of_polar_lights_in_the_night_sky_The_village_features_charming_snow_covered_houses_with_warm_light_glowing_from_the_windows_There_are_decorated_evergree.jpeg');
-            background-size: 100%;
-            background-position: center;
+            background: url('background.jpeg');
+            background-size: cover;
+            background-position: center center;
             background-repeat: no-repeat;
-            font-family: 'Mountains of Christmas', cursive;
+            background-attachment: fixed;
+            font-family: 'Quicksand', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -28,97 +29,217 @@
             overflow-x: hidden;
         }
 
-        .snow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .snowflake {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(720deg);
-            }
-        }
-
         .content {
             position: relative;
             z-index: 2;
             text-align: center;
             max-width: 800px;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.656);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
             color: #E0E7FF;
-            font-size: 3em;
+            font-size: 2em;
             font-weight: 700;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
             margin-bottom: 20px;
         }
 
         p {
-            color: #A0AEC0;
-            font-size: 1.5em;
+            color: #c9ddf7;
+            font-size: 1.2em;
             font-weight: 400;
+            margin-bottom: 10px;
+            text-align: left;
         }
 
-        a {
-            display: inline-block;
+        ul {
+            color: #c9ddf7;
+            font-size: 1em;
+            font-weight: 400;
+            margin-left: 40px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
             margin-top: 20px;
+        }
+
+        .nav-button {
             padding: 10px 20px;
             font-size: 1.2em;
             color: #E0E7FF;
             text-decoration: none;
             background: rgba(255, 255, 255, 0.2);
+            border: none;
             border-radius: 10px;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        a:hover {
+        .nav-button:hover {
             background: rgba(255, 255, 255, 0.5);
             transform: scale(1.05);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        pre {
+            background-color: #d8d8d814;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: left;
+            margin: 10px 0;
+            font-size: 0.8em;
+            line-height: 1.4;
         }
     </style>
 </head>
 <body>
-    <div class="snow" id="snowContainer"></div>
     <div class="content">
-        <h1>Tür X</h1>
-        <p>Hier kommt der Inhalt für dieses Türchen hin.</p>
-        <a href="../index.html">Zurück zum Adventskalender</a>
+        <div class="page active" data-page="1">
+            <h1>Türchen 20: Bayes Theorem</h1>
+            <p>Heyy, heute schauen wir uns noch das Bayes-Theorem an, die Formel ist:</p>
+            <pre>
+P(A|B) = P(B|A) * P(A) / P(B)
+            </pre>
+            <p>Mit den Bestandteilen:</p>
+            <ul>
+                <li><code>P(A|B)</code>: Wahrscheinlichkeit für A, gegeben B ist eingetreten (posterior probability).</li>
+                <li><code>P(B|A)</code>: Wahrscheinlichkeit für B, gegeben A ist eingetreten (likelihood).</li>
+                <li><code>P(A)</code>: Wahrscheinlichkeit für A (prior probability).</li>
+                <li><code>P(B)</code>: Wahrscheinlichkeit für B (evidence).</li>
+            </ul>
+            <p>Wir werden dann auf der nächsten page ein kleines Beispiel durchgehen und die Berechnung dann in R umsetzennnnn</p>
+        </div>
+
+        <div class="page" data-page="2">
+            <h1>Bayes Theorem - Seite 2</h1>
+            <p>Wir starten mal mit einen Beispiel: Stell dir vor, es gibt einen Test für eine Krankheit. Der Test ist zu 95% korrekt, aber nur 1% der Bevölkerung hat die Krankheit. Wir wollen die Wahrscheinlichkeit berechnen, dass jemand, der positiv getestet wurde, tatsächlich krank ist.</p>
+            <p>Deine task wäre es erstmal, aus den Text die Wahrscheinlichkeiten für die Variablen zu bestimmen</p>
+            <pre>
+P_disease = ?       # ?% der Bevölkerung hat die Krankheit
+P_no_disease = ?     # ?% haben die Krankheit nicht
+P_positive_given_disease = ?  # Test erkennt Krankheit zu ?%
+P_positive_given_no_disease = ?  # ?% falsch-positiv
+            </pre>
+        </div>
+
+        <div class="page" data-page="3">
+            <h1>Bayes Theorem - Seite 3</h1>
+            <p>Lösung:</p>
+<pre>
+P_disease = 0.01        # 1% der Bevölkerung hat die Krankheit
+P_no_disease = 0.99     # 99% haben die Krankheit nicht
+P_positive_given_disease = 0.95  # Test erkennt Krankheit zu 95%
+P_positive_given_no_disease = 0.05  # 5% falsch-positiv
+
+</pre>
+            <p>Okey, super jetzt haben wir alle Wahrscheinlichkeiten, aus den Beispiel zusammen. Damit wir aber Bayes Theorem anwenden können um P(disease | positive) zu berechnen, fehlt uns noch
+                P(positive). Maybe bist du noch gut in der Wahrscheinlichkeitsrechnung drin und weißt wie wir das aus den gegebenen Werten bestimmen können oder du kannst auf die nächste page skippen für die Lösung.
+            </p>
+        </div>
+        <div class="page" data-page="4">
+            <h1>Bayes Theorem - Seite 4</h1>
+            <p>Lösung:</p>
+            <pre>
+P_positive = P_positive_given_disease * P_disease + P_positive_given_no_disease * P_no_disease
+            </pre>
+            <p> Die nächste task ist es jetzt <code>P(disease | positive)</code> mit der Bayes-Formel zu berchnen.</p>
+        
+        </div>
+
+        <div class="page" data-page="5">
+            <h1>Bayes Theorem - Seite 5</h1>
+            <pre>
+P_disease_given_positive = (P_positive_given_disease * P_disease) / P_positive
+cat("Die Wahrscheinlichkeit, dass jemand krank ist, wenn der Test positiv ist:", P_disease_given_positive, "\n")
+            </pre>
+            <p>Das ganze können wir jetzt auch als Funktion schreiben, bei der wir verschiedene Wahrscheinlichkeiten für <code>P(disease)</code> testen können. Das ist super easy und bekommst du hin :)</p>
+        </div>
+
+        <div class="page" data-page="6">
+            <h1>Bayes Theorem - Seite 6</h1>
+            <p>Lösung:</p>
+           <pre>
+disease_probability = function(P_disease, P_positive_given_disease, P_positive_given_no_disease) {
+  P_no_disease = 1 - P_disease
+  P_positive = P_positive_given_disease * P_disease + P_positive_given_no_disease * P_no_disease
+  P_disease_given_positive = (P_positive_given_disease * P_disease) / P_positive
+  return(P_disease_given_positive)
+}
+
+# testen
+disease_probability(0.01, 0.95, 0.05)
+            </pre>
+            <p>Man könnte sich jetzt anschauen was passiert wenn <code>P(disease)</code> viel kleiner wird und jaaaa, hoffentlich hat dir dieser kurze Recap gefallen, du konntest dir nochmal die Formel anschauen und tschauuuu :]</p>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-button" id="prevButton">Zurück</button>
+            <button class="nav-button" id="nextButton">Weiter</button>
+            <a href="../index.html" class="nav-button">Zum Kalender</a>
+        </div>
     </div>
 
     <script>
-        function createSnowflakes() {
-            const snowContainer = document.getElementById('snowContainer');
-            for (let i = 0; i < 100; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.classList.add('snowflake');
-                snowflake.style.left = Math.random() * 100 + 'vw';
-                snowflake.style.width = Math.random() * 3 + 1 + 'px';
-                snowflake.style.height = snowflake.style.width;
-                snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                snowflake.style.animationDelay = Math.random() * -10 + 's';
-                snowContainer.appendChild(snowflake);
-            }
+        const pages = document.querySelectorAll('.page');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        let currentPage = 1;
+
+        function updateButtons() {
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage === pages.length;
         }
 
-        createSnowflakes();
+        function showPage(pageNumber) {
+            pages.forEach(page => page.classList.remove('active'));
+            document.querySelector(`[data-page="${pageNumber}"]`).classList.add('active');
+            currentPage = pageNumber;
+            updateButtons();
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentPage < pages.length) {
+                showPage(currentPage + 1);
+            }
+        });
+
+        updateButtons();
     </script>
 </body>
 </html>
